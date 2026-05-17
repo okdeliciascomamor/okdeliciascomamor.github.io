@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário Editorial Maio 2026 — Ok Delícias com Amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital@1&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --lavanda: #E6DEF5;
+      --creme: #FFF8EA;
+      --ouro: #C3983A;
+      --ouro-claro: #DCB95F;
+      --ouro-suave: #F0D282;
+      --rosa: #F0D0DC;
+      --lilas: #D0B6E4;
+      --pessego: #FFE8C0;
+      --verde: #94AC7C;
+      --txt: #3A2812;
+      --txt-m: #624624;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--lavanda);
+      font-family: 'Instrument Sans', sans-serif;
+      color: var(--txt);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, var(--lilas) 0%, var(--lavanda) 40%, var(--creme) 100%);
+      border-bottom: 2px solid var(--ouro-claro);
+      padding: 36px 24px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .header-brand {
+      font-family: 'Italiana', serif;
+      font-size: clamp(22px, 5vw, 38px);
+      color: var(--txt);
+      letter-spacing: 0.04em;
+    }
+    .header-sub {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(13px, 2.5vw, 16px);
+      color: var(--txt-m);
+      margin-top: 6px;
+    }
+    .header-month {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--ouro);
+      color: #fff;
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 20px;
+    }
+    .header-ornament {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--ouro-claro);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* LEGENDA */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      justify-content: center;
+      padding: 18px 20px;
+      background: var(--creme);
+      border-bottom: 1px solid var(--ouro-suave);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--txt-m);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-a1 { background: #F4C5C0; }
+    .dot-a2 { background: #D0B6E4; }
+    .dot-a3 { background: #94AC7C; }
+    .dot-a4 { background: #C3983A; }
+    .dot-a5 { background: #FFE8C0; border: 1px solid #C3983A; }
+
+    /* FORMATO BADGES */
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .badge-card    { background: #E8E0F5; color: #5A3E80; }
+    .badge-reel    { background: #FFDDE8; color: #9B3060; }
+    .badge-carrossel { background: #D6EDD6; color: #3A6B3A; }
+
+    /* SEMANA HEADER */
+    .week-block {
+      margin: 20px 16px 0;
+    }
+    .week-title {
+      font-family: 'Italiana', serif;
+      font-size: 15px;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 0 4px;
+      border-bottom: 1px solid var(--ouro-suave);
+      margin-bottom: 12px;
+    }
+
+    /* GRID */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    /* CARD DO DIA */
+    .day-card {
+      background: var(--creme);
+      border-radius: 14px;
+      border: 1px solid var(--ouro-suave);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .day-card:hover {
+      box-shadow: 0 4px 18px rgba(195,152,58,0.18);
+    }
+
+    /* HOJE DESTAQUE */
+    .day-card.hoje {
+      border: 2px solid var(--ouro);
+      box-shadow: 0 0 0 3px rgba(195,152,58,0.18);
+    }
+    .hoje-badge {
+      background: var(--ouro);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 5px 0;
+    }
+
+    /* TOPO DO CARD */
+    .card-header {
+      padding: 10px 14px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-date {
+      font-family: 'Italiana', serif;
+      font-size: 22px;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .card-weekday {
+      font-size: 11px;
+      color: var(--txt-m);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .card-top-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    /* ANGULO FAIXA */
+    .angulo-faixa {
+      width: 100%;
+      height: 4px;
+    }
+    .a1 { background: #F4C5C0; }
+    .a2 { background: #D0B6E4; }
+    .a3 { background: #94AC7C; }
+    .a4 { background: #C3983A; }
+    .a5 { background: #FFE8C0; }
+
+    /* CORPO */
+    .card-body {
+      padding: 10px 14px 14px;
+    }
+    .card-title {
+      font-family: 'Italiana', serif;
+      font-size: 16px;
+      color: var(--txt);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .card-copy-headline {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--txt-m);
+      margin-bottom: 4px;
+    }
+    .card-copy-legenda {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: #7A5C3A;
+      line-height: 1.5;
+    }
+
+    /* HORARIO */
+    .card-footer {
+      padding: 7px 14px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-top: 1px dashed var(--ouro-suave);
+    }
+    .card-hora {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ouro);
+    }
+    .card-hora-label {
+      font-size: 11px;
+      color: var(--txt-m);
+    }
+
+    /* DIA SEM POST */
+    .day-rest {
+      background: linear-gradient(135deg, #f8f4ff, #fff8ea);
+      border: 1px dashed #D0B6E4;
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+      opacity: 0.7;
+    }
+    .day-rest .card-date {
+      font-family: 'Italiana', serif;
+      font-size: 20px;
+      color: var(--txt-m);
+    }
+    .day-rest .card-weekday {
+      font-size: 11px;
+      color: #b0a0c0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .day-rest-label {
+      font-size: 11px;
+      color: #c0b0d0;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* STORIES STRIP */
+    .stories-strip {
+      background: var(--rosa);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin: 10px 14px 0;
+      font-size: 11px;
+      color: var(--txt-m);
+      font-weight: 600;
+    }
+    .stories-strip span {
+      opacity: 0.75;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      margin: 32px 16px 28px;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--txt-m);
+      opacity: 0.7;
+    }
+
+    @media (max-width: 480px) {
+      .week-grid { grid-template-columns: 1fr; }
+      .header-brand { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">Ok Delícias com Amor</div>
+  <div class="header-sub">@ok_deliciascomamor &nbsp;·&nbsp; Santo Cristo, RS</div>
+  <div class="header-month">Calendário Editorial · Maio 2026</div>
+  <span class="header-ornament"></span>
+</header>
+
+<!-- LEGENDA ANGULOS -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot dot-a1"></div>Ângulo 1: Dor</div>
+  <div class="legend-item"><div class="legend-dot dot-a2"></div>Ângulo 2: Desejo</div>
+  <div class="legend-item"><div class="legend-dot dot-a3"></div>Ângulo 3: Prova Social</div>
+  <div class="legend-item"><div class="legend-dot dot-a4"></div>Ângulo 4: Urgência</div>
+  <div class="legend-item"><div class="legend-dot dot-a5"></div>Ângulo 5: Bastidores</div>
+</div>
+
+<!-- ================= SEMANA 1: 17-23 MAIO ================= -->
+<div class="week-block">
+  <div class="week-title">Semana 1 &nbsp;·&nbsp; 17 a 23 de maio</div>
+  <div class="week-grid">
+
+    <!-- 17/05 SAB — HOJE, Ângulo 2 Desejo -->
+    <div class="day-card hoje">
+      <div class="hoje-badge">PUBLICAR HOJE</div>
+      <div class="angulo-faixa a2"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">17</div>
+          <div class="card-weekday">Sábado</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-card">Card</span>
+          <span style="font-size:11px;color:#9B6BB5;font-weight:600;">Desejo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">A mesa que as pessoas param para fotografar</div>
+        <div class="card-copy-headline">"sua festa merece o melhor"</div>
+        <div class="card-copy-legenda">
+          Feito à mão, do início ao fim. Salgados artesanais que transformam qualquer mesa em atração. Festa Junina chegando: garanta sua data.
+        </div>
+      </div>
+      <div class="stories-strip">Stories sugeridos: <span>bastidor de montagem + caixinha de perguntas sobre Festa Junina</span></div>
+      <div class="card-footer">
+        <div class="card-hora">11h00</div>
+        <div class="card-hora-label">· maior engajamento sábado manhã</div>
+      </div>
+    </div>
+
+    <!-- 19/05 SEG — Ângulo 5 Bastidores Reel -->
+    <div class="day-card">
+      <div class="angulo-faixa a5"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">19</div>
+          <div class="card-weekday">Segunda</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-reel">Reel</span>
+          <span style="font-size:11px;color:#9B5500;font-weight:600;">Bastidores</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Como nasce um mini hambúrguer artesanal</div>
+        <div class="card-copy-headline">"Não tem segredo. Tem cuidado."</div>
+        <div class="card-copy-legenda">
+          Reel processo: da modelagem ao toque final. Mostrar as mãos da Oliete, a bancada, o detalhe da cenoura. Áudio trending suave.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>repost do Reel + enquete "Qual o seu salgado favorito?"</span></div>
+      <div class="card-footer">
+        <div class="card-hora">18h30</div>
+        <div class="card-hora-label">· reels segunda fim de tarde</div>
+      </div>
+    </div>
+
+    <!-- 21/05 QUA — Ângulo 3 Prova Social -->
+    <div class="day-card">
+      <div class="angulo-faixa a3"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">21</div>
+          <div class="card-weekday">Quarta</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-carrossel">Carrossel</span>
+          <span style="font-size:11px;color:#3A6B3A;font-weight:600;">Prova Social</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">O que os clientes dizem depois da festa</div>
+        <div class="card-copy-headline">"Cada depoimento conta uma história."</div>
+        <div class="card-copy-legenda">
+          Slides: foto do evento + frase do cliente. Último slide: "Sua festa pode ser a próxima. Peça seu orçamento."
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>caixinha "me conta como foi sua última festa" + responder DMs</span></div>
+      <div class="card-footer">
+        <div class="card-hora">19h00</div>
+        <div class="card-hora-label">· quarta noite, alto alcance</div>
+      </div>
+    </div>
+
+    <!-- 23/05 SEX — Ângulo 1 Dor -->
+    <div class="day-card">
+      <div class="angulo-faixa a1"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">23</div>
+          <div class="card-weekday">Sexta</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-card">Card</span>
+          <span style="font-size:11px;color:#9B3030;font-weight:600;">Dor</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Salgado congelado ou salgado de verdade?</div>
+        <div class="card-copy-headline">"A diferença aparece na mesa."</div>
+        <div class="card-copy-legenda">
+          Contraste visual: foto de salgado artesanal vs. salgado industrial (sem marcar ninguém). Texto: "Seus convidados merecem o real."
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>enquete "Você já levou mico com salgado ruim numa festa?"</span></div>
+      <div class="card-footer">
+        <div class="card-hora">12h00</div>
+        <div class="card-hora-label">· sexta horário de almoço</div>
+      </div>
+    </div>
+
+    <!-- 18/05 DOM e 20/05 TER — descanso -->
+    <div class="day-rest">
+      <div class="card-date">18</div>
+      <div class="card-weekday">Domingo</div>
+      <div class="day-rest-label">Stories leves (opcional)</div>
+    </div>
+
+    <div class="day-rest">
+      <div class="card-date">20</div>
+      <div class="card-weekday">Terça</div>
+      <div class="day-rest-label">Descanso de feed</div>
+    </div>
+
+    <div class="day-rest">
+      <div class="card-date">22</div>
+      <div class="card-weekday">Quinta</div>
+      <div class="day-rest-label">Descanso de feed</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= SEMANA 2: 24-31 MAIO ================= -->
+<div class="week-block" style="margin-top:28px;">
+  <div class="week-title">Semana 2 &nbsp;·&nbsp; 24 a 31 de maio · Plantando Festa Junina</div>
+  <div class="week-grid">
+
+    <!-- 24/05 SAB — Ângulo 4 Urgência Festa Junina -->
+    <div class="day-card">
+      <div class="angulo-faixa a4"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">24</div>
+          <div class="card-weekday">Sábado</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-card">Card</span>
+          <span style="font-size:11px;color:#8B6800;font-weight:600;">Urgência</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Festa Junina com salgado artesanal. Datas esgotando.</div>
+        <div class="card-copy-headline">"Junho chega rápido. Sua data, não."</div>
+        <div class="card-copy-legenda">
+          Junho está chegando e as datas para encomendas já estão sendo reservadas. Garanta o seu lugar antes que acabem.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>contador regressivo para junho + link direto no WhatsApp</span></div>
+      <div class="card-footer">
+        <div class="card-hora">10h00</div>
+        <div class="card-hora-label">· sábado manhã, planejamento de festa</div>
+      </div>
+    </div>
+
+    <!-- 26/05 SEG — Ângulo 5 Bastidores Reel -->
+    <div class="day-card">
+      <div class="angulo-faixa a5"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">26</div>
+          <div class="card-weekday">Segunda</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-reel">Reel</span>
+          <span style="font-size:11px;color:#9B5500;font-weight:600;">Bastidores</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Um dia de produção na cozinha da Ok</div>
+        <div class="card-copy-headline">"40 anos de história em cada detalhe."</div>
+        <div class="card-copy-legenda">
+          Reel mostrando a rotina de produção: separar ingredientes, modelar, fritar, embalar. A herança que chegou até aqui.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>bastidor do Reel + "me conta o que você quer ver na cozinha"</span></div>
+      <div class="card-footer">
+        <div class="card-hora">18h00</div>
+        <div class="card-hora-label">· segunda fim de tarde</div>
+      </div>
+    </div>
+
+    <!-- 28/05 QUA — Ângulo 2 Desejo Carrossel -->
+    <div class="day-card">
+      <div class="angulo-faixa a2"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">28</div>
+          <div class="card-weekday">Quarta</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-carrossel">Carrossel</span>
+          <span style="font-size:11px;color:#9B6BB5;font-weight:600;">Desejo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">5 salgados que vão ser o destaque da sua Festa Junina</div>
+        <div class="card-copy-headline">"Coxinha, pastel, mini hambúrguer..."</div>
+        <div class="card-copy-legenda">
+          Carrossel com foto de cada salgado, nome, descrição curta e dica de apresentação na mesa junina. Último slide: orçamento.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>pergunta "Qual você pediria primeiro?" com enquete de opções</span></div>
+      <div class="card-footer">
+        <div class="card-hora">19h00</div>
+        <div class="card-hora-label">· quarta noite</div>
+      </div>
+    </div>
+
+    <!-- 30/05 SEX — Ângulo 5 Bastidores Reel -->
+    <div class="day-card">
+      <div class="angulo-faixa a5"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">30</div>
+          <div class="card-weekday">Sexta</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-reel">Reel</span>
+          <span style="font-size:11px;color:#9B5500;font-weight:600;">Bastidores</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Montagem de mesa junina: do produto à decoração</div>
+        <div class="card-copy-headline">"A mesa que todo mundo vai parar para fotografar."</div>
+        <div class="card-copy-legenda">
+          Reel de transformação: bandeja vazia vira mesa temática. Mostrar como dispor os salgados, decoração simples com chapéu e bandeirinha.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>enquete "sua festa vai ser grande ou íntima?" + oferta de orçamento</span></div>
+      <div class="card-footer">
+        <div class="card-hora">11h30</div>
+        <div class="card-hora-label">· sexta pré-fds, planejamento</div>
+      </div>
+    </div>
+
+    <!-- 31/05 SAB — Ângulo 4 Urgência -->
+    <div class="day-card">
+      <div class="angulo-faixa a4"></div>
+      <div class="card-header">
+        <div>
+          <div class="card-date">31</div>
+          <div class="card-weekday">Sábado</div>
+        </div>
+        <div class="card-top-right">
+          <span class="badge badge-card">Card</span>
+          <span style="font-size:11px;color:#8B6800;font-weight:600;">Urgência</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Último sábado de maio. Primeiro passo para junho.</div>
+        <div class="card-copy-headline">"Quem reserva antes, garante o melhor."</div>
+        <div class="card-copy-legenda">
+          Junho é o mês mais festivo do ano aqui no Sul. As encomendas já estão chegando. Não deixe para depois: fale agora pelo WhatsApp.
+        </div>
+      </div>
+      <div class="stories-strip">Stories: <span>swipe up para WhatsApp + "últimas datas disponíveis em junho"</span></div>
+      <div class="card-footer">
+        <div class="card-hora">10h00</div>
+        <div class="card-hora-label">· sábado manhã cedo</div>
+      </div>
+    </div>
+
+    <!-- Descanso -->
+    <div class="day-rest">
+      <div class="card-date">25</div>
+      <div class="card-weekday">Domingo</div>
+      <div class="day-rest-label">Descanso de feed</div>
+    </div>
+
+    <div class="day-rest">
+      <div class="card-date">27</div>
+      <div class="card-weekday">Terça</div>
+      <div class="day-rest-label">Descanso de feed</div>
+    </div>
+
+    <div class="day-rest">
+      <div class="card-date">29</div>
+      <div class="card-weekday">Quinta</div>
+      <div class="day-rest-label">Descanso de feed</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESUMO ESTRATÉGICO -->
+<div style="margin:28px 16px 0; background:var(--creme); border:1px solid var(--ouro-suave); border-radius:14px; padding:20px 20px;">
+  <div style="font-family:'Italiana',serif; font-size:18px; color:var(--ouro); margin-bottom:12px; letter-spacing:0.05em;">Resumo Estratégico · 17–31 Maio</div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px;">
+    <div style="background:var(--lavanda); border-radius:10px; padding:12px;">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--txt-m); margin-bottom:4px;">Total de posts</div>
+      <div style="font-family:'Italiana',serif; font-size:26px; color:var(--txt);">9</div>
+      <div style="font-size:11px; color:var(--txt-m);">4 a 5 por semana</div>
+    </div>
+    <div style="background:#EAF4EA; border-radius:10px; padding:12px;">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--txt-m); margin-bottom:4px;">Reels</div>
+      <div style="font-family:'Italiana',serif; font-size:26px; color:var(--txt);">3</div>
+      <div style="font-size:11px; color:var(--txt-m);">Motor orgânico principal</div>
+    </div>
+    <div style="background:#FFF0F5; border-radius:10px; padding:12px;">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--txt-m); margin-bottom:4px;">Carrosséis</div>
+      <div style="font-family:'Italiana',serif; font-size:26px; color:var(--txt);">2</div>
+      <div style="font-size:11px; color:var(--txt-m);">Engajamento e salvo</div>
+    </div>
+    <div style="background:var(--pessego); border-radius:10px; padding:12px;">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--txt-m); margin-bottom:4px;">Cards estáticos</div>
+      <div style="font-family:'Italiana',serif; font-size:26px; color:var(--txt);">4</div>
+      <div style="font-size:11px; color:var(--txt-m);">Âncora de mensagem</div>
+    </div>
+    <div style="background:#FFF8EA; border:1px solid var(--ouro-suave); border-radius:10px; padding:12px;">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--txt-m); margin-bottom:4px;">Festa Junina CTA</div>
+      <div style="font-family:'Italiana',serif; font-size:26px; color:var(--ouro);">3</div>
+      <div style="font-size:11px; color:var(--txt-m);">Seeds de urgência</div>
+    </div>
+  </div>
+  <div style="margin-top:14px; font-family:'Lora',serif; font-style:italic; font-size:13px; color:var(--txt-m); line-height:1.7;">
+    Stories: publicar diariamente. Focar em bastidor, caixinhas de pergunta e contagem regressiva para junho. Responder todos os DMs e comentários em até 2h.
+  </div>
+</div>
+
+<div class="page-footer">
+  Ok Delícias com Amor &nbsp;·&nbsp; @ok_deliciascomamor &nbsp;·&nbsp; Santo Cristo, RS &nbsp;·&nbsp; Gerado em 17/05/2026
+</div>
+
+</body>
+</html>
