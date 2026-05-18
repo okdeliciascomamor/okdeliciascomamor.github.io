@@ -1,7 +1,7 @@
 """
 Post Ok Delicias com Amor - 17/05/2026
-Angulo 2: Desejo
-Tema: "A mesa que as pessoas param para fotografar"
+Redesign: foto full-bleed + gradiente + tipografia grande
+Foto: IMG_1130.JPEG (canoizinhas overhead com toppings coloridos)
 """
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
@@ -11,27 +11,26 @@ import os
 # -------------------------------------------------------------------
 # CAMINHOS
 # -------------------------------------------------------------------
-BASE_DIR = r"C:\Users\nasci\Documents\Kaempf Business\Jobs 2026\Ok - Delicias com Amor"
-FONTS_DIR = r"C:\Users\nasci\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\ffaf7eb1-e899-4b15-8564-46cec1055316\c0cd45e2-3d2e-40a4-a7fe-06fecc44a961\skills\canvas-design\canvas-fonts"
-FOTO_PATH = os.path.join(BASE_DIR, "fotos", "WhatsApp_Image_2026-05-05_at_16.52.18.jpeg")
-OUTPUT_PATH = os.path.join(BASE_DIR, "post_maio17.png")
+BASE_DIR   = r"C:\Users\nasci\Documents\Kaempf Business\Jobs 2026\Ok - Delicias com Amor"
+FONTS_DIR  = r"C:\Users\nasci\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\ffaf7eb1-e899-4b15-8564-46cec1055316\c0cd45e2-3d2e-40a4-a7fe-06fecc44a961\skills\canvas-design\canvas-fonts"
+FOTO_PATH  = os.path.join(BASE_DIR, "fotos", "IMG_1130.JPEG")
+OUTPUT     = os.path.join(BASE_DIR, "post_maio17.png")
 
 # -------------------------------------------------------------------
 # PALETA
 # -------------------------------------------------------------------
-LAVANDA     = (230, 222, 245)
-CREME       = (255, 248, 234)
-OURO        = (195, 152, 58)
-OURO_CLARO  = (220, 185, 95)
-OURO_SUAVE  = (240, 210, 130)
-ROSA        = (240, 208, 220)
-LILAS       = (208, 182, 228)
-PESSEGO     = (255, 232, 192)
-VERDE       = (148, 172, 124)
-VERDE_ESC   = (100, 130, 80)
-TXT         = (58, 40, 18)
-TXT_M       = (98, 70, 36)
-BRANCO      = (255, 255, 255)
+LAVANDA    = (230, 222, 245)
+CREME      = (255, 248, 234)
+OURO       = (195, 152, 58)
+OURO_CLARO = (220, 185, 95)
+OURO_SUAVE = (240, 210, 130)
+ROSA       = (240, 208, 220)
+LILAS      = (208, 182, 228)
+PESSEGO    = (255, 232, 192)
+VERDE      = (148, 172, 124)
+VERDE_ESC  = (100, 130, 80)
+TXT        = (58, 40, 18)
+TXT_M      = (98, 70, 36)
 
 # -------------------------------------------------------------------
 # FONTES
@@ -41,260 +40,214 @@ def load_font(name, size):
     try:
         return ImageFont.truetype(path, size)
     except Exception as e:
-        print(f"AVISO: fonte {name} nao carregou ({e}), usando default.")
+        print(f"AVISO: {name} ({e})")
         return ImageFont.load_default()
 
-fnt_script   = load_font("NothingYouCouldDo-Regular.ttf", 52)
-fnt_title    = load_font("Italiana-Regular.ttf", 88)
-fnt_sub      = load_font("Lora-Italic.ttf", 36)
-fnt_detail   = load_font("InstrumentSans-Regular.ttf", 26)
-fnt_brand    = load_font("Italiana-Regular.ttf", 34)
+fnt_script = load_font("NothingYouCouldDo-Regular.ttf", 52)
+fnt_title  = load_font("Italiana-Regular.ttf", 108)
+fnt_sub    = load_font("Lora-Italic.ttf", 32)
+fnt_detail = load_font("InstrumentSans-Regular.ttf", 26)
+fnt_brand  = load_font("Italiana-Regular.ttf", 32)
 
 # -------------------------------------------------------------------
-# HELPERS GEOMETRICOS
+# HELPERS
 # -------------------------------------------------------------------
-
-def hex_to_rgb(h):
-    h = h.lstrip("#")
-    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
-
-def draw_rounded_rect(draw, xy, radius, fill=None, outline=None, width=1):
-    x0, y0, x1, y1 = xy
-    draw.rounded_rectangle([x0, y0, x1, y1], radius=radius, fill=fill, outline=outline, width=width)
-
 def lerp_color(c1, c2, t):
     return tuple(int(c1[i] + (c2[i] - c1[i]) * t) for i in range(3))
 
-def gradient_rect(img, x0, y0, x1, y1, color_top, color_bot):
-    draw = ImageDraw.Draw(img)
-    h = y1 - y0
-    for dy in range(h):
-        t = dy / max(h - 1, 1)
-        c = lerp_color(color_top, color_bot, t)
-        draw.line([(x0, y0 + dy), (x1, y0 + dy)], fill=c)
-
-# -------------------------------------------------------------------
-# FLORES DECORATIVAS
-# -------------------------------------------------------------------
-
 def draw_petal(draw, cx, cy, angle_deg, length, width, color):
     angle = math.radians(angle_deg)
-    px = cx + length * math.cos(angle)
-    py = cy + length * math.sin(angle)
-    perp = math.radians(angle_deg + 90)
-    ox = (width / 2) * math.cos(perp)
-    oy = (width / 2) * math.sin(perp)
-    poly = [
-        (cx + ox, cy + oy),
-        (px + ox * 0.3, py + oy * 0.3),
-        (px, py),
-        (px - ox * 0.3, py - oy * 0.3),
-        (cx - ox, cy - oy),
+    px    = cx + length * math.cos(angle)
+    py    = cy + length * math.sin(angle)
+    perp  = math.radians(angle_deg + 90)
+    ox    = (width / 2) * math.cos(perp)
+    oy    = (width / 2) * math.sin(perp)
+    poly  = [
+        (cx + ox,        cy + oy),
+        (px + ox * 0.3,  py + oy * 0.3),
+        (px,             py),
+        (px - ox * 0.3,  py - oy * 0.3),
+        (cx - ox,        cy - oy),
     ]
     draw.polygon(poly, fill=color)
 
 def draw_flower(draw, cx, cy, petals=8, petal_len=22, petal_w=10,
                 color_outer=None, color_center=None, center_r=7):
-    if color_outer is None:
-        color_outer = ROSA
-    if color_center is None:
-        color_center = OURO_SUAVE
+    if color_outer  is None: color_outer  = ROSA
+    if color_center is None: color_center = OURO_SUAVE
     for i in range(petals):
-        angle = 360 / petals * i
-        draw_petal(draw, cx, cy, angle, petal_len, petal_w, color_outer)
+        draw_petal(draw, cx, cy, 360 / petals * i, petal_len, petal_w, color_outer)
     draw.ellipse([cx - center_r, cy - center_r, cx + center_r, cy + center_r],
                  fill=color_center)
 
-def draw_leaf(draw, cx, cy, angle_deg, length=18, width=8, color=None):
-    if color is None:
-        color = VERDE
-    draw_petal(draw, cx, cy, angle_deg, length, width, color)
-    draw_petal(draw, cx, cy, angle_deg + 180, length * 0.5, width * 0.6, color)
+def draw_leaf(draw, cx, cy, angle_deg, length=20, width=9, color=None):
+    if color is None: color = VERDE
+    draw_petal(draw, cx, cy, angle_deg,        length,          width,        color)
+    draw_petal(draw, cx, cy, angle_deg + 180,  length * 0.45,   width * 0.6,  VERDE_ESC)
 
-def draw_corner_ornament(draw, cx, cy, flip_x=False, flip_y=False):
+def draw_corner_ornament(draw, cx, cy, flip_x=False, flip_y=False, scale=1.0):
     sx = -1 if flip_x else 1
     sy = -1 if flip_y else 1
+    s  = scale
 
-    # Flor central do canto
-    draw_flower(draw, cx, cy, petals=8, petal_len=24, petal_w=11,
-                color_outer=LILAS, color_center=OURO_SUAVE)
+    # Flor central grande
+    draw_flower(draw, cx, cy, petals=8,
+                petal_len=int(38*s), petal_w=int(17*s),
+                color_outer=LILAS, color_center=OURO_SUAVE, center_r=int(11*s))
 
-    # Flores pequenas ao redor
-    for ang, dist, col in [
-        (45, 38, ROSA), (90, 44, LILAS), (0, 44, ROSA),
-    ]:
+    # 3 flores medias
+    for ang, dist, col in [(45, int(60*s), ROSA), (85, int(65*s), LILAS), (5, int(65*s), ROSA)]:
         fx = cx + sx * dist * math.cos(math.radians(ang))
         fy = cy + sy * dist * math.sin(math.radians(ang))
-        draw_flower(draw, int(fx), int(fy), petals=6, petal_len=14, petal_w=7,
-                    color_outer=col, color_center=OURO_SUAVE, center_r=4)
+        draw_flower(draw, int(fx), int(fy), petals=6,
+                    petal_len=int(19*s), petal_w=int(9*s),
+                    color_outer=col, color_center=OURO_SUAVE, center_r=int(6*s))
+
+    # Flores minusculas
+    for ang, dist, col in [(22, int(82*s), PESSEGO), (66, int(82*s), PESSEGO)]:
+        fx = cx + sx * dist * math.cos(math.radians(ang))
+        fy = cy + sy * dist * math.sin(math.radians(ang))
+        draw_flower(draw, int(fx), int(fy), petals=5,
+                    petal_len=int(10*s), petal_w=int(5*s),
+                    color_outer=col, color_center=OURO_SUAVE, center_r=int(3*s))
 
     # Folhas
-    for ang, dist in [(20, 52), (70, 52)]:
+    for ang, dist in [(14, int(70*s)), (76, int(70*s)), (38, int(92*s)), (54, int(92*s))]:
         lx = cx + sx * dist * math.cos(math.radians(ang))
         ly = cy + sy * dist * math.sin(math.radians(ang))
-        draw_leaf(draw, int(lx), int(ly), 45 * sx, length=18, width=7, color=VERDE)
-        draw_leaf(draw, int(lx), int(ly), 135 * sx, length=14, width=6, color=VERDE_ESC)
+        draw_leaf(draw, int(lx), int(ly), ang * sx,
+                  length=int(22*s), width=int(9*s), color=VERDE)
 
 # -------------------------------------------------------------------
 # MAIN
 # -------------------------------------------------------------------
-
 def build_post():
     W, H = 1080, 1080
-    img = Image.new("RGB", (W, H), CREME)
 
-    # --- FUNDO GRADIENTE LAVANDA -> CREME ---
-    gradient_rect(img, 0, 0, W, H, LAVANDA, CREME)
+    # === FOTO FULL-BLEED ===
+    foto_raw = Image.open(FOTO_PATH).convert("RGB")
+    foto_raw = ImageEnhance.Brightness(foto_raw).enhance(1.10)
+    foto_raw = ImageEnhance.Color(foto_raw).enhance(1.20)
+    foto_raw = ImageEnhance.Contrast(foto_raw).enhance(1.05)
 
+    fw, fh = foto_raw.size
+    # Crop para quadrado, centralizado
+    side = min(fw, fh)
+    l = (fw - side) // 2
+    t = (fh - side) // 2
+    foto_sq = foto_raw.crop((l, t, l + side, t + side))
+    img = foto_sq.resize((W, H), Image.LANCZOS)
+
+    # === GRADIENT OVERLAY (terco inferior) ===
+    # Creme emergindo do fundo para legibilidade do texto
+    grad_h  = 460
+    grad_y0 = H - grad_h
+    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    draw_ov = ImageDraw.Draw(overlay)
+    cr, cg, cb = CREME
+    for dy in range(grad_h):
+        t = dy / (grad_h - 1)
+        # curva mais agressiva para boa base sob o painel de texto
+        alpha = int((t ** 0.60) * 248)
+        draw_ov.line([(0, grad_y0 + dy), (W - 1, grad_y0 + dy)],
+                     fill=(cr, cg, cb, alpha))
+
+    img_rgba = img.convert("RGBA")
+    img_rgba = Image.alpha_composite(img_rgba, overlay)
+    img      = img_rgba.convert("RGB")
+    draw     = ImageDraw.Draw(img)
+
+    # === PAINEL SEMI-OPACO PARA LEGIBILIDADE DO TEXTO ===
+    _ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    _d  = ImageDraw.Draw(_ov)
+    _d.rounded_rectangle(
+        [55, H - 412, W - 55, H - 28],
+        radius=24,
+        fill=(*CREME, 210),
+        outline=(*OURO_SUAVE, 185),
+        width=1,
+    )
+    img  = Image.alpha_composite(img.convert("RGBA"), _ov).convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    # --- BORDA DOURADA FINA EXTERNA ---
-    margin = 18
-    draw_rounded_rect(draw, [margin, margin, W - margin, H - margin],
-                      radius=28, fill=None, outline=OURO_CLARO, width=2)
+    # === BORDAS DOURADAS DUPLAS ===
+    m1, m2 = 14, 22
+    draw.rounded_rectangle([m1, m1, W-m1, H-m1], radius=28,
+                            fill=None, outline=OURO_CLARO, width=2)
+    draw.rounded_rectangle([m2, m2, W-m2, H-m2], radius=22,
+                            fill=None, outline=OURO_SUAVE,  width=1)
 
-    # --- ORNAMENTOS NOS 4 CANTOS ---
-    off = 56
-    draw_corner_ornament(draw, off, off, flip_x=False, flip_y=False)
-    draw_corner_ornament(draw, W - off, off, flip_x=True, flip_y=False)
-    draw_corner_ornament(draw, off, H - off, flip_x=False, flip_y=True)
-    draw_corner_ornament(draw, W - off, H - off, flip_x=True, flip_y=True)
+    # === ORNAMENTOS NOS 4 CANTOS ===
+    off = 68
+    draw_corner_ornament(draw, off,     off,     flip_x=False, flip_y=False, scale=1.00)
+    draw_corner_ornament(draw, W - off, off,     flip_x=True,  flip_y=False, scale=1.00)
+    draw_corner_ornament(draw, off,     H - off, flip_x=False, flip_y=True,  scale=0.88)
+    draw_corner_ornament(draw, W - off, H - off, flip_x=True,  flip_y=True,  scale=0.88)
 
-    # --- FOTO DO PRODUTO ---
-    foto_raw = Image.open(FOTO_PATH).convert("RGB")
-
-    # Ajuste de brilho e cor
-    foto_raw = ImageEnhance.Brightness(foto_raw).enhance(1.10)
-    foto_raw = ImageEnhance.Color(foto_raw).enhance(1.12)
-
-    # Crop quadrado centralizado
-    fw, fh = foto_raw.size
-    side = min(fw, fh)
-    left = (fw - side) // 2
-    top = (fh - side) // 2
-    foto_sq = foto_raw.crop((left, top, left + side, top + side))
-
-    # Tamanho da moldura da foto
-    foto_w = 580
-    foto_h = 520
-    foto_resized = foto_sq.resize((foto_w, foto_h), Image.LANCZOS)
-
-    foto_x = (W - foto_w) // 2
-    foto_y = 80
-
-    # Sombra suave
-    shadow = Image.new("RGBA", (foto_w + 16, foto_h + 16), (0, 0, 0, 0))
-    sdraw = ImageDraw.Draw(shadow)
-    sdraw.rounded_rectangle([8, 8, foto_w + 8, foto_h + 8], radius=28,
-                             fill=(40, 20, 10, 80))
-    shadow_blur = shadow.filter(ImageFilter.GaussianBlur(12))
-    img.paste(shadow_blur.convert("RGB"), (foto_x - 8, foto_y - 8),
-              mask=shadow_blur.split()[3])
-
-    # Moldura creme arredondada
-    frame_pad = 8
-    frame_layer = Image.new("RGBA", (foto_w + frame_pad * 2, foto_h + frame_pad * 2),
-                            (255, 255, 255, 0))
-    fdraw = ImageDraw.Draw(frame_layer)
-    fdraw.rounded_rectangle([0, 0, foto_w + frame_pad * 2 - 1,
-                              foto_h + frame_pad * 2 - 1],
-                             radius=32, fill=(255, 248, 234, 255))
-    img.paste(frame_layer.convert("RGB"),
-              (foto_x - frame_pad, foto_y - frame_pad),
-              mask=frame_layer.split()[3])
-
-    # Foto com máscara arredondada
-    mask = Image.new("L", (foto_w, foto_h), 0)
-    mdraw = ImageDraw.Draw(mask)
-    mdraw.rounded_rectangle([0, 0, foto_w - 1, foto_h - 1], radius=26, fill=255)
-    img.paste(foto_resized, (foto_x, foto_y), mask=mask)
-
-    # Borda dourada na foto
-    fdraw2 = ImageDraw.Draw(img)
-    fdraw2.rounded_rectangle([foto_x - 1, foto_y - 1, foto_x + foto_w, foto_y + foto_h],
-                              radius=27, fill=None, outline=OURO_CLARO, width=2)
-
-    # --- PAINEL CREME INFERIOR ---
-    panel_y = foto_y + foto_h + 22
-    panel_h = H - panel_y - 28
-    panel_x0, panel_x1 = 48, W - 48
-
-    draw_rounded_rect(draw, [panel_x0, panel_y, panel_x1, panel_y + panel_h],
-                      radius=22, fill=(255, 252, 242, 255) if False else CREME)
-    # Redesenhar com PIL direto (rounded_rectangle nao aceita alpha aqui)
-    draw.rounded_rectangle([panel_x0, panel_y, panel_x1, panel_y + panel_h],
-                            radius=22, fill=CREME, outline=OURO_SUAVE, width=1)
-
-    # --- COPY ---
+    # === COPY (sobre o gradiente) ===
     cx = W // 2
 
-    # Script: "sua festa merece"
+    # -- Script: "sua festa merece" --
     script_text = "sua festa merece"
-    bbox = draw.textbbox((0, 0), script_text, font=fnt_script)
-    sw = bbox[2] - bbox[0]
-    sy_pos = panel_y + 22
+    s_bbox = draw.textbbox((0, 0), script_text, font=fnt_script)
+    sw     = s_bbox[2] - s_bbox[0]
+    sh     = s_bbox[3] - s_bbox[1]
+    sy_pos = H - 370
     draw.text((cx - sw // 2, sy_pos), script_text, font=fnt_script, fill=TXT_M)
 
-    # Titulo grande: "Feito a mao"
-    title_text = "Feito a mao"
-    # Usar à (a com crase) via Unicode
-    title_text = "Feito à mão"
-    bbox = draw.textbbox((0, 0), title_text, font=fnt_title)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    ty_pos = sy_pos + 52
+    # -- Titulo: "Feito a mao" --
+    title_text = "Feito à mão"   # "Feito à mão"
+    t_bbox = draw.textbbox((0, 0), title_text, font=fnt_title)
+    tw     = t_bbox[2] - t_bbox[0]
+    th     = t_bbox[3] - t_bbox[1]
+    ty_pos = sy_pos + sh + 12
     draw.text((cx - tw // 2, ty_pos), title_text, font=fnt_title, fill=TXT)
 
-    # Linha dourada + ornamento divisor
-    div_y = ty_pos + th + 18
-    line_half = 90
-    draw.line([(cx - line_half, div_y), (cx - 14, div_y)],
-              fill=OURO_CLARO, width=2)
-    draw.line([(cx + 14, div_y), (cx + line_half, div_y)],
-              fill=OURO_CLARO, width=2)
-    # Losango central
+    # -- Divisor dourado com losango --
+    div_y     = ty_pos + th + 12
+    line_half = 82
+    draw.line([(cx - line_half, div_y), (cx - 13, div_y)], fill=OURO_CLARO, width=2)
+    draw.line([(cx + 13,        div_y), (cx + line_half, div_y)], fill=OURO_CLARO, width=2)
     d = 5
     draw.polygon([(cx, div_y - d), (cx + d, div_y), (cx, div_y + d), (cx - d, div_y)],
                  fill=OURO)
 
-    # Sub: "Salgados artesanais por encomenda"
+    # -- Sub: "Salgados artesanais por encomenda" --
     sub_text = "Salgados artesanais por encomenda"
-    bbox = draw.textbbox((0, 0), sub_text, font=fnt_sub)
-    subw = bbox[2] - bbox[0]
-    sub_y = div_y + 20
+    sub_bbox = draw.textbbox((0, 0), sub_text, font=fnt_sub)
+    subw     = sub_bbox[2] - sub_bbox[0]
+    subh     = sub_bbox[3] - sub_bbox[1]
+    sub_y    = div_y + 16
     draw.text((cx - subw // 2, sub_y), sub_text, font=fnt_sub, fill=TXT_M)
 
-    # Detalhe menor: "Festa Junina · Garanta sua data"
-    detail_text = "Festa Junina  ·  Garanta sua data"
-    bbox = draw.textbbox((0, 0), detail_text, font=fnt_detail)
-    dw = bbox[2] - bbox[0]
-    dh = bbox[3] - bbox[1]
-    detail_y = sub_y + 52
-    # Pill de fundo dourado
-    pill_pad_x, pill_pad_y = 20, 8
+    # -- Pill CTA: "Festa Junina  Garanta sua data" --
+    detail_text = "Temporada de festas  ·  Garante sua data"
+    d_bbox  = draw.textbbox((0, 0), detail_text, font=fnt_detail)
+    dw      = d_bbox[2] - d_bbox[0]
+    dh      = d_bbox[3] - d_bbox[1]
+    det_y   = sub_y + subh + 18
+    pad_x, pad_y = 22, 10
     draw.rounded_rectangle(
-        [cx - dw // 2 - pill_pad_x, detail_y - pill_pad_y,
-         cx + dw // 2 + pill_pad_x, detail_y + dh + pill_pad_y],
-        radius=16, fill=PESSEGO, outline=OURO_SUAVE, width=1
+        [cx - dw // 2 - pad_x, det_y - pad_y,
+         cx + dw // 2 + pad_x, det_y + dh + pad_y],
+        radius=20, fill=PESSEGO, outline=OURO_SUAVE, width=1
     )
-    draw.text((cx - dw // 2, detail_y), detail_text, font=fnt_detail, fill=TXT_M)
+    draw.text((cx - dw // 2, det_y), detail_text, font=fnt_detail, fill=TXT_M)
 
-    # Marca: "Ok Delicias com Amor"
-    brand_text = "Ok Delícias com Amor"
-    bbox = draw.textbbox((0, 0), brand_text, font=fnt_brand)
-    bw = bbox[2] - bbox[0]
-    brand_y = panel_y + panel_h - 52
+    # -- Marca --
+    brand_text = "Ok Delícias com Amor"   # "Ok Delícias com Amor"
+    b_bbox  = draw.textbbox((0, 0), brand_text, font=fnt_brand)
+    bw      = b_bbox[2] - b_bbox[0]
+    brand_y = H - 58
+    draw.line([(cx - 72, brand_y - 10), (cx + 72, brand_y - 10)],
+              fill=OURO_SUAVE, width=1)
     draw.text((cx - bw // 2, brand_y), brand_text, font=fnt_brand, fill=OURO)
 
-    # Linha fina acima da marca
-    draw.line([(cx - 80, brand_y - 10), (cx + 80, brand_y - 10)],
-              fill=OURO_SUAVE, width=1)
-
-    # --- SALVAR ---
+    # === SALVAR ===
     img = img.convert("RGB")
-    img.save(OUTPUT_PATH, "PNG", quality=98)
-    print(f"Post salvo em: {OUTPUT_PATH}")
-    return OUTPUT_PATH
+    img.save(OUTPUT, "PNG", quality=98)
+    print(f"Salvo: {OUTPUT}")
+    return OUTPUT
 
 
 if __name__ == "__main__":
