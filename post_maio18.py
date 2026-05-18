@@ -59,7 +59,7 @@ def draw_leaf(draw, cx, cy, angle_deg, length=14, width=6):
     draw_petal(draw, cx, cy, angle_deg+180, length*.4,   width*.5,   VERDE_ESC)
 
 def build_post():
-    W, H = 1080, 1080
+    W, H = 1080, 1350
 
     # === FUNDO: creme no topo -> lavanda suave ===
     img = Image.new("RGB", (W, H), CREME)
@@ -80,8 +80,8 @@ def build_post():
     draw = ImageDraw.Draw(img)
 
     # === FOTO CIRCULAR no terco superior ===
-    cx, cy_foto = W // 2, 310
-    foto_r = 238
+    cx, cy_foto = W // 2, 430
+    foto_r = 310
 
     foto_raw = Image.open(FOTO_PATH).convert("RGB")
     foto_raw = ImageEnhance.Brightness(foto_raw).enhance(1.10)
@@ -193,11 +193,11 @@ def build_post():
                 plen=9, pw=4, col_out=LAVANDA_M, col_mid=OURO_PAL, cr=3)
 
     # === TIPOGRAFIA ===
-    fnt_script = load_font("NothingYouCouldDo-Regular.ttf", 46)
-    fnt_title  = load_font("Italiana-Regular.ttf", 104)
-    fnt_sub    = load_font("Lora-Italic.ttf", 33)
-    fnt_detail = load_font("InstrumentSans-Regular.ttf", 25)
-    fnt_brand  = load_font("Italiana-Regular.ttf", 32)
+    fnt_script = load_font("NothingYouCouldDo-Regular.ttf", 52)
+    fnt_title  = load_font("Italiana-Regular.ttf", 116)
+    fnt_sub    = load_font("Lora-Italic.ttf", 36)
+    fnt_detail = load_font("InstrumentSans-Regular.ttf", 27)
+    fnt_brand  = load_font("Italiana-Regular.ttf", 34)
 
     base_y = div1_y + 32
 

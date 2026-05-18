@@ -122,21 +122,25 @@ def draw_corner_ornament(draw, cx, cy, flip_x=False, flip_y=False, scale=1.0):
 # MAIN
 # -------------------------------------------------------------------
 def build_post():
-    W, H = 1080, 1080
+    W, H = 1080, 1350
 
-    # === FOTO FULL-BLEED ===
+    # === FOTO FULL-BLEED (crop 4:5 para formato retrato) ===
     foto_raw = Image.open(FOTO_PATH).convert("RGB")
     foto_raw = ImageEnhance.Brightness(foto_raw).enhance(1.10)
     foto_raw = ImageEnhance.Color(foto_raw).enhance(1.20)
     foto_raw = ImageEnhance.Contrast(foto_raw).enhance(1.05)
 
     fw, fh = foto_raw.size
-    # Crop para quadrado, centralizado
-    side = min(fw, fh)
-    l = (fw - side) // 2
-    t = (fh - side) // 2
-    foto_sq = foto_raw.crop((l, t, l + side, t + side))
-    img = foto_sq.resize((W, H), Image.LANCZOS)
+    target_ratio = W / H  # 0.8 (4:5)
+    if fw / fh > target_ratio:
+        new_fw = int(fh * target_ratio)
+        l = (fw - new_fw) // 2
+        foto_crop = foto_raw.crop((l, 0, l + new_fw, fh))
+    else:
+        new_fh = int(fw / target_ratio)
+        t = (fh - new_fh) // 2
+        foto_crop = foto_raw.crop((0, t, fw, t + new_fh))
+    img = foto_crop.resize((W, H), Image.LANCZOS)
 
     # === GRADIENT OVERLAY (terco inferior) ===
     # Creme emergindo do fundo para legibilidade do texto
