@@ -95,6 +95,39 @@ header{
   margin-top:3px;
   font-family:'Instrument Sans',sans-serif;
 }
+
+/* ITEM PREMIUM — tratamento visual separado */
+.item.premium{
+  border:1.5px solid var(--ouro);
+  background:linear-gradient(135deg,#FFF8EA 0%,#FFF0D0 100%);
+  position:relative;
+  overflow:hidden;
+}
+.item.premium::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:4px;height:100%;
+  background:var(--ouro);
+  border-radius:4px 0 0 4px;
+}
+.item.premium .i-nome::after{
+  content:'✦ Para eventos especiais';
+  display:block;
+  font-size:10px;
+  color:var(--ouro);
+  font-weight:600;
+  letter-spacing:.5px;
+  margin-top:3px;
+  font-family:'Instrument Sans',sans-serif;
+}
+.i-preco-unit{
+  font-size:11px;
+  color:var(--ouro-c);
+  margin-top:4px;
+  font-weight:600;
+  white-space:nowrap;
+}
 .i-info{flex:1;}
 .i-nome{font-family:'Gloock',serif;font-size:17px;color:var(--txt);margin-bottom:4px;line-height:1.2;}
 .i-recheio{font-size:12px;color:var(--txt-m);font-style:italic;line-height:1.5;}
@@ -259,12 +292,16 @@ footer{margin-top:36px;padding:32px 24px;background:var(--txt);text-align:center
     <div class="i-preco"><div class="i-val">R$ 180</div><div class="i-uni">por cento</div></div>
   </div>
 
-  <div class="item destaque">
+  <div class="item premium">
     <div class="i-info">
       <div class="i-nome">Canoinha Premium</div>
-      <div class="i-recheio">Frios · Frango com Fios de Ovos</div>
+      <div class="i-recheio">Frios selecionados · Frango com fios de ovos artesanais · apresentação diferenciada</div>
     </div>
-    <div class="i-preco"><div class="i-val">R$ 200</div><div class="i-uni">por cento</div></div>
+    <div class="i-preco">
+      <div class="i-val">R$ 200</div>
+      <div class="i-uni">por cento</div>
+      <div class="i-preco-unit">R$ 2,00 por peça</div>
+    </div>
   </div>
 </div>
 
