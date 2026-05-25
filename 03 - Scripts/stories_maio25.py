@@ -250,8 +250,8 @@ def story_1():
 # Foto de perto, texto de desejo, enquete visual
 # ─────────────────────────────────────────────────────────────────────────────
 def story_2():
-    foto_path = os.path.join(BASE_DIR, "fotos", "IMG_1049.JPEG")
-    img  = foto_fundo(foto_path, overlay_alpha=140, overlay_color=(20, 9, 2))
+    foto_path = os.path.join(BASE_DIR, "fotos", "IMG_1153.JPEG")
+    img  = foto_fundo(foto_path, overlay_alpha=145, overlay_color=(20, 9, 2))
     draw = ImageDraw.Draw(img)
     cx   = W // 2
 
@@ -266,7 +266,7 @@ def story_2():
 
     # Script
     cy = script_outlined_wrap(
-        draw, "é o pastel da Oliete.",
+        draw, "foi isso que saiu da cozinha.",
         fnt_sc, W - 140, cx, cy,
         fill=OURO_P, ol_col=(10, 4, 1), ol=2, line_sp=4
     ) + 20
@@ -279,14 +279,14 @@ def story_2():
 
     # Título
     cy = wrap_centered(
-        draw, "massa crocante.",
+        draw, "o pedido completo.",
         fnt_tit, W - 80, cx, cy,
         fill=BRANCO, shadow=True, shd_col=(8, 3, 1), line_spacing=10
     ) + 22
 
     # Detalhe de produto
     cy = wrap_centered(
-        draw, "recheio generoso, no ponto certo.",
+        draw, "coxinha, pastel, rolinho. do jeito que você gosta.",
         fnt_det, W - 120, cx, cy,
         fill=OURO_P, line_spacing=10
     ) + 52
@@ -297,12 +297,12 @@ def story_2():
 
     # Pergunta
     cy = wrap_centered(
-        draw, "no próximo pedido?",
+        draw, "qual é o seu favorito?",
         fnt_sub, W - 120, cx, cy,
         fill=BRANCO, line_spacing=10
     ) + 32
 
-    # Poll visual — botão B com fill escuro para texto legível
+    # Poll visual
     poll_buttons(draw, cx, cy, "quero encomendar", "já sou cliente", fnt_poll)
 
     # Marca
