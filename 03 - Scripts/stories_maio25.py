@@ -64,8 +64,8 @@ def foto_fundo(path, overlay_alpha=160, overlay_color=(18, 8, 2)):
     nw      = int(img.width  * ratio)
     nh      = int(img.height * ratio)
     img     = img.resize((nw, nh), Image.LANCZOS)
-    x_off   = (nw - W) // 2
-    y_off   = (nh - H) // 2
+    x_off   = max(0, (nw - W) // 2)
+    y_off   = max(0, (nh - H) // 2)
     img     = img.crop((x_off, y_off, x_off + W, y_off + H))
     # Overlay escuro quente
     overlay = Image.new("RGBA", (W, H), overlay_color + (overlay_alpha,))
@@ -203,11 +203,6 @@ def story_1():
     fnt_tit = load_font("Lora-Bold.ttf",                100)
     fnt_sub = load_font("Lora-BoldItalic.ttf",           48)
     fnt_br  = load_font("InstrumentSans-Bold.ttf",       36)
-
-    # Gradiente escuro no topo (lê melhor o script)
-    for y in range(320):
-        alpha = int(120 * (1 - y / 320))
-        draw.line([(0, y), (W, y)], fill=lerp((8, 3, 1), (0, 0, 0), 0), )
 
     cy = 480
 
