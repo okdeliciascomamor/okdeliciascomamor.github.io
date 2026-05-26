@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-3 Stories Segunda Chuvosa — Ok Delícias com Amor — 25/05/2026
+3 Stories Terça — Ok Delícias com Amor — 26/05/2026
 
-Arc: bastidores do dia → produto + enquete → urgência Festa Junina
-
-Story 1: "a cozinha não parou." — foto herói, bastidores da segunda
-Story 2: "é o pastel da Oliete." — produto de perto + poll visual
-Story 3: "junho está chegando." — urgência Festa Junina, CTA WhatsApp
+Arc: enquete de cardápio — o seguidor decide
+Story 1: Hook "hoje você decide." — gradiente, sem foto
+Story 2: Batalha split screen Risólis vs Mini Hambúrguer — espaço pro poll sticker
+Story 3: CTA "resultado amanhã. hoje, garante o seu."
 """
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageEnhance
@@ -22,7 +21,6 @@ PESSEGO   = (255, 232, 192)
 OURO      = (179, 138,  52)
 OURO_S    = (210, 175, 100)
 OURO_P    = (235, 210, 155)
-LAVANDA_M = (196, 181, 224)
 TXT       = ( 38,  22,   8)
 TXT_M     = ( 72,  50,  28)
 BRANCO    = (255, 255, 255)
@@ -51,29 +49,6 @@ def bg_grad(top, bot):
     return img
 
 
-def foto_fundo(path, overlay_alpha=160, overlay_color=(18, 8, 2)):
-    """Foto full-bleed com overlay escuro para legibilidade do texto."""
-    img  = Image.open(path)
-    img  = ImageOps.exif_transpose(img).convert("RGB")
-    img  = ImageEnhance.Brightness(img).enhance(1.08)
-    img  = ImageEnhance.Color(img).enhance(1.14)
-    # Redimensionar cobrindo todo o canvas (crop centralizado)
-    ratio_w = W / img.width
-    ratio_h = H / img.height
-    ratio   = max(ratio_w, ratio_h)
-    nw      = int(img.width  * ratio)
-    nh      = int(img.height * ratio)
-    img     = img.resize((nw, nh), Image.LANCZOS)
-    x_off   = max(0, (nw - W) // 2)
-    y_off   = max(0, (nh - H) // 2)
-    img     = img.crop((x_off, y_off, x_off + W, y_off + H))
-    # Overlay escuro quente
-    overlay = Image.new("RGBA", (W, H), overlay_color + (overlay_alpha,))
-    base    = img.convert("RGBA")
-    base.alpha_composite(overlay)
-    return base.convert("RGB")
-
-
 def border(draw, col=None):
     if col is None: col = OURO_S
     draw.rounded_rectangle([16, 16, W - 16, H - 16], radius=32, outline=col, width=2)
@@ -96,8 +71,8 @@ def draw_petal(draw, cx, cy, angle_deg, length, width, color):
 
 
 def draw_flower(draw, cx, cy, petals=6, plen=12, pw=6, col_out=None, col_mid=None, cr=4):
-    if col_out is None: col_out = (210, 195, 235)
-    if col_mid is None: col_mid = OURO_P
+    if col_out is None: col_out = OURO_P
+    if col_mid is None: col_mid = CREME
     for i in range(petals):
         draw_petal(draw, cx, cy, 360 / petals * i, plen, pw, col_out)
     draw.ellipse([cx - cr, cy - cr, cx + cr, cy + cr], fill=col_mid)
@@ -166,243 +141,83 @@ def script_outlined_wrap(draw, text, font, max_w, cx, y,
     return y
 
 
-def poll_buttons(draw, cx, y, opt_a, opt_b,
-                 fnt, col_a=OURO_S, col_b=BRANCO):
-    """Dois botões de enquete visual (sem funcionalidade, estético)."""
-    bw, bh, gap, r = 420, 88, 24, 18
-    # Botão A
-    ax = cx - bw - gap // 2
-    draw.rounded_rectangle([ax, y, ax + bw, y + bh],
-                            radius=r, fill=OURO, outline=OURO_S, width=2)
-    bb = draw.textbbox((0, 0), opt_a, font=fnt)
-    draw.text((ax + (bw - (bb[2] - bb[0])) // 2,
-               y  + (bh - (bb[3] - bb[1])) // 2),
-              opt_a, font=fnt, fill=BRANCO)
-    # Botão B — fundo semi-escuro para texto branco legível
-    bx = cx + gap // 2
-    draw.rounded_rectangle([bx, y, bx + bw, y + bh],
-                            radius=r, fill=(60, 38, 14), outline=OURO_S, width=2)
-    bb2 = draw.textbbox((0, 0), opt_b, font=fnt)
-    draw.text((bx + (bw - (bb2[2] - bb2[0])) // 2,
-               y  + (bh - (bb2[3] - bb2[1])) // 2),
-              opt_b, font=fnt, fill=BRANCO)
-    return y + bh + 16
+def crop_half(path, target_w, target_h, enhance=True):
+    """Carrega foto e faz cover-crop para target_w x target_h."""
+    img = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    if enhance:
+        img = ImageEnhance.Brightness(img).enhance(1.08)
+        img = ImageEnhance.Color(img).enhance(1.14)
+    ratio = max(target_w / img.width, target_h / img.height)
+    nw    = int(img.width  * ratio)
+    nh    = int(img.height * ratio)
+    img   = img.resize((nw, nh), Image.LANCZOS)
+    x_off = max(0, (nw - target_w) // 2)
+    y_off = max(0, (nh - target_h) // 2)
+    return img.crop((x_off, y_off, x_off + target_w, y_off + target_h))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STORY 1 — Bastidores: "a cozinha não parou"
-# Foto herói full-bleed, texto mínimo, tom documental
+# STORY 1 — Hook: "hoje você decide."
 # ─────────────────────────────────────────────────────────────────────────────
 def story_1():
-    foto_path = os.path.join(BASE_DIR, "fotos", "IMG_1049.JPEG")
-    img  = foto_fundo(foto_path, overlay_alpha=158, overlay_color=(18, 8, 2))
-    draw = ImageDraw.Draw(img)
-    cx   = W // 2
-
-    fnt_sc  = load_font("NothingYouCouldDo-Regular.ttf", 72)
-    fnt_tit = load_font("Lora-Bold.ttf",                100)
-    fnt_sub = load_font("Lora-BoldItalic.ttf",           48)
-    fnt_br  = load_font("InstrumentSans-Bold.ttf",       36)
-
-    cy = 480
-
-    # Script âncora
-    cy = script_outlined_wrap(
-        draw, "segunda de manhã.",
-        fnt_sc, W - 160, cx, cy,
-        fill=OURO_P, ol_col=(10, 4, 1), ol=2, line_sp=4
-    ) + 24
-
-    # Ornamento
-    draw.line([(cx - 90, cy), (cx - 16, cy)], fill=OURO_S, width=2)
-    draw.line([(cx + 16, cy), (cx + 90, cy)], fill=OURO_S, width=2)
-    diamond(draw, cx, cy, 6, OURO)
-    cy += 44
-
-    # Título
-    cy = wrap_centered(
-        draw, "a cozinha não parou.",
-        fnt_tit, W - 80, cx, cy,
-        fill=BRANCO, shadow=True, shd_col=(8, 3, 1), line_spacing=12
-    ) + 24
-
-    # Subtítulo
-    cy = wrap_centered(
-        draw, "enquanto o céu fechava, ela produzia.",
-        fnt_sub, W - 120, cx, cy,
-        fill=OURO_P, line_spacing=10
-    )
-
-    # Marca
-    br_b = draw.textbbox((0, 0), "Ok Delícias com Amor", font=fnt_br)
-    draw.text((cx - (br_b[2] - br_b[0]) // 2, H - 72),
-              "Ok Delícias com Amor", font=fnt_br, fill=OURO_S)
-
-    border(draw, col=OURO_S)
-    out = os.path.join(BASE_DIR, "02 - Criativos", "maio25", "story_maio25_1.png")
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    img.convert("RGB").save(out, "PNG", quality=98)
-    print(f"Salvo: {out}")
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# STORY 2 — Produto + Poll: "é o pastel da Oliete"
-# Foto de perto, texto de desejo, enquete visual
-# ─────────────────────────────────────────────────────────────────────────────
-def story_2():
-    foto_path = os.path.join(BASE_DIR, "fotos", "IMG_1153.JPEG")
-    img  = foto_fundo(foto_path, overlay_alpha=145, overlay_color=(20, 9, 2))
-    draw = ImageDraw.Draw(img)
-    cx   = W // 2
-
-    fnt_sc   = load_font("NothingYouCouldDo-Regular.ttf", 68)
-    fnt_tit  = load_font("Lora-Bold.ttf",                 96)
-    fnt_sub  = load_font("Lora-BoldItalic.ttf",           46)
-    fnt_det  = load_font("Lora-Italic.ttf",               40)
-    fnt_poll = load_font("InstrumentSans-Bold.ttf",        38)
-    fnt_br   = load_font("InstrumentSans-Bold.ttf",        36)
-
-    cy = 430
-
-    # Script
-    cy = script_outlined_wrap(
-        draw, "foi isso que saiu da cozinha.",
-        fnt_sc, W - 140, cx, cy,
-        fill=OURO_P, ol_col=(10, 4, 1), ol=2, line_sp=4
-    ) + 20
-
-    # Ornamento
-    draw.line([(cx - 90, cy), (cx - 16, cy)], fill=OURO_S, width=2)
-    draw.line([(cx + 16, cy), (cx + 90, cy)], fill=OURO_S, width=2)
-    diamond(draw, cx, cy, 6, OURO)
-    cy += 44
-
-    # Título
-    cy = wrap_centered(
-        draw, "o pedido completo.",
-        fnt_tit, W - 80, cx, cy,
-        fill=BRANCO, shadow=True, shd_col=(8, 3, 1), line_spacing=10
-    ) + 22
-
-    # Detalhe de produto
-    cy = wrap_centered(
-        draw, "coxinha, pastel, rolinho. do jeito que você gosta.",
-        fnt_det, W - 120, cx, cy,
-        fill=OURO_P, line_spacing=10
-    ) + 52
-
-    # Divisor
-    draw.line([(cx - 100, cy), (cx + 100, cy)], fill=(180, 150, 80), width=1)
-    cy += 36
-
-    # Pergunta
-    cy = wrap_centered(
-        draw, "qual é o seu favorito?",
-        fnt_sub, W - 120, cx, cy,
-        fill=BRANCO, line_spacing=10
-    ) + 32
-
-    # Poll visual
-    poll_buttons(draw, cx, cy, "quero encomendar", "já sou cliente", fnt_poll)
-
-    # Marca
-    br_b = draw.textbbox((0, 0), "Ok Delícias com Amor", font=fnt_br)
-    draw.text((cx - (br_b[2] - br_b[0]) // 2, H - 72),
-              "Ok Delícias com Amor", font=fnt_br, fill=OURO_S)
-
-    border(draw, col=OURO_S)
-    out = os.path.join(BASE_DIR, "02 - Criativos", "maio25", "story_maio25_2.png")
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    img.convert("RGB").save(out, "PNG", quality=98)
-    print(f"Salvo: {out}")
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# STORY 3 — Urgência: "junho está chegando"
-# Sem foto — gradiente creme/dourado, Festa Junina, CTA direto
-# ─────────────────────────────────────────────────────────────────────────────
-def story_3():
     img  = bg_grad(CREME, PESSEGO)
     draw = ImageDraw.Draw(img)
     cx   = W // 2
 
-    fnt_sc  = load_font("NothingYouCouldDo-Regular.ttf",  76)
-    fnt_tit = load_font("Lora-Bold.ttf",                  98)
-    fnt_sub = load_font("Lora-BoldItalic.ttf",             52)
-    fnt_det = load_font("Lora-Italic.ttf",                 44)
-    fnt_cta = load_font("InstrumentSans-Bold.ttf",         42)
-    fnt_br  = load_font("InstrumentSans-Bold.ttf",         36)
+    fnt_sc  = load_font("NothingYouCouldDo-Regular.ttf",  88)
+    fnt_tit = load_font("Lora-Bold.ttf",                 100)
+    fnt_sub = load_font("Lora-BoldItalic.ttf",            50)
+    fnt_det = load_font("Lora-Italic.ttf",                42)
+    fnt_br  = load_font("InstrumentSans-Bold.ttf",        36)
 
-    # Flores topo — tons quentes e festivos
+    # Flores topo
     for fx, col_o in [(66, (220, 185, 120)), (W - 66, (205, 168, 100))]:
         draw_flower(draw, fx, 96, petals=6, plen=14, pw=7,
                     col_out=col_o, col_mid=OURO_P, cr=5)
         draw_leaf(draw, fx - 12, 110, 225, 13, 5)
         draw_leaf(draw, fx + 12, 110, 315, 13, 5)
 
-    cy = 600
+    cy = 560
 
-    # Script âncora — contagem
+    # Script
     cy = script_outlined_wrap(
-        draw, "em 6 dias.",
-        fnt_sc, W - 160, cx, cy,
+        draw, "hoje você decide.",
+        fnt_sc, W - 120, cx, cy,
         fill=OURO_S, ol_col=(180, 130, 40), ol=2, line_sp=4
-    ) + 24
+    ) + 32
 
     # Ornamento
     draw.line([(cx - 90, cy), (cx - 16, cy)], fill=OURO, width=2)
     draw.line([(cx + 16, cy), (cx + 90, cy)], fill=OURO, width=2)
     diamond(draw, cx, cy, 6, OURO)
-    cy += 40
+    cy += 44
 
     # Título
     cy = wrap_centered(
-        draw, "junho chega.",
+        draw, "qual sai no próximo pedido?",
         fnt_tit, W - 80, cx, cy,
-        fill=TXT, shadow=True, shd_col=(210, 188, 148), line_spacing=10
-    ) + 16
+        fill=TXT, shadow=True, shd_col=(210, 188, 148), line_spacing=12
+    ) + 20
 
     # Divisor
     draw.line([(cx - 100, cy), (cx + 100, cy)], fill=(195, 168, 105), width=1)
     cy += 30
 
-    # Gancho urgência
+    # Subtítulo
     cy = wrap_centered(
-        draw, "as vagas de junho estão sendo preenchidas.",
+        draw, "dois favoritos. um voto. você escolhe.",
         fnt_sub, W - 100, cx, cy,
         fill=TXT_M, line_spacing=12
     ) + 20
 
-    # Suporte
-    cy = wrap_centered(
-        draw, "a Oliete produz com antecedência. quem reserva primeiro, garante.",
-        fnt_det, W - 120, cx, cy,
-        fill=(110, 78, 38), line_spacing=12
-    ) + 44
+    # Detalhe
+    wrap_centered(
+        draw, "veja o próximo story e vote.",
+        fnt_det, W - 140, cx, cy,
+        fill=(140, 100, 55), line_spacing=10
+    )
 
-    # CTA box — link pro cardápio (link sticker do Instagram vai em cima)
-    cta_text = "veja o cardápio completo"
-    cta_w, cta_h, r = 720, 100, 20
-    cta_x = cx - cta_w // 2
-    draw.rounded_rectangle([cta_x, cy, cta_x + cta_w, cy + cta_h],
-                            radius=r, fill=OURO, outline=OURO_P, width=2)
-    bb = draw.textbbox((0, 0), cta_text, font=fnt_cta)
-    tx = cx - (bb[2] - bb[0]) // 2
-    ty = cy + (cta_h - (bb[3] - bb[1])) // 2
-    draw.text((tx, ty), cta_text, font=fnt_cta, fill=BRANCO)
-    # Seta visual
-    arr_x = cta_x + cta_w - 42
-    arr_y = cy + cta_h // 2
-    draw.polygon([(arr_x, arr_y - 10), (arr_x + 18, arr_y), (arr_x, arr_y + 10)], fill=OURO_P)
-    cy += cta_h + 12
-
-    # Label abaixo do botão
-    lbl = "link disponivel no story"
-    bb_l = draw.textbbox((0, 0), lbl, font=fnt_br)
-    draw.text((cx - (bb_l[2] - bb_l[0]) // 2, cy),
-              lbl, font=load_font("InstrumentSans-Bold.ttf", 28), fill=(150, 110, 55))
-
-    # Flores cantos inferiores
+    # Flores base
     for fx in [66, W - 66]:
         draw_flower(draw, fx, H - 130, petals=6, plen=13, pw=6,
                     col_out=(210, 175, 100), col_mid=OURO_P, cr=5)
@@ -413,7 +228,221 @@ def story_3():
               "Ok Delícias com Amor", font=fnt_br, fill=TXT_M)
 
     border(draw, col=OURO_S)
-    out = os.path.join(BASE_DIR, "02 - Criativos", "maio25", "story_maio25_3.png")
+    out = os.path.join(BASE_DIR, "02 - Criativos", "maio26", "story_maio26_1.png")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    img.convert("RGB").save(out, "PNG", quality=98)
+    print(f"Salvo: {out}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# STORY 2 — Batalha split screen: Risólis vs Mini Hambúrguer
+# Espaço inferior reservado para poll sticker do Instagram
+# ─────────────────────────────────────────────────────────────────────────────
+def story_2():
+    HALF     = W // 2          # 540
+    FOTO_H   = 1340            # altura da zona de foto (deixa 580px p/ poll+marca)
+    OVL_DARK = (12, 5, 1)
+
+    path_a = os.path.join(BASE_DIR, "fotos", "IMG_1049.JPEG")
+    path_b = os.path.join(BASE_DIR, "fotos",
+                          "WhatsApp_Image_2026-05-05_at_16.52.18_(1).jpeg")
+
+    # Canvas base escuro
+    img  = Image.new("RGB", (W, H), (18, 8, 2))
+    draw = ImageDraw.Draw(img)
+    cx   = W // 2
+
+    # --- Foto esquerda: Risólis (IMG_1049) ---
+    foto_a = crop_half(path_a, HALF, FOTO_H)
+    ov_a   = Image.new("RGBA", (HALF, FOTO_H), OVL_DARK + (155,))
+    fa     = foto_a.convert("RGBA")
+    fa.alpha_composite(ov_a)
+    img.paste(fa.convert("RGB"), (0, 0))
+
+    # --- Foto direita: Mini Hambúrguer ---
+    foto_b = crop_half(path_b, HALF, FOTO_H)
+    ov_b   = Image.new("RGBA", (HALF, FOTO_H), OVL_DARK + (140,))
+    fb     = foto_b.convert("RGBA")
+    fb.alpha_composite(ov_b)
+    img.paste(fb.convert("RGB"), (HALF, 0))
+
+    # Linha divisória dourada
+    draw.line([(HALF, 0), (HALF, FOTO_H)], fill=OURO, width=3)
+
+    # Badge VS central
+    vs_y = FOTO_H // 2
+    draw.ellipse([cx - 52, vs_y - 52, cx + 52, vs_y + 52], fill=(18, 8, 2))
+    draw.ellipse([cx - 48, vs_y - 48, cx + 48, vs_y + 48], fill=OURO)
+    fnt_vs = load_font("Lora-Bold.ttf", 44)
+    bb = draw.textbbox((0, 0), "VS", font=fnt_vs)
+    draw.text((cx - (bb[2] - bb[0]) // 2, vs_y - (bb[3] - bb[1]) // 2),
+              "VS", font=fnt_vs, fill=BRANCO)
+
+    fnt_sc   = load_font("NothingYouCouldDo-Regular.ttf", 62)
+    fnt_nome = load_font("Lora-Bold.ttf",                 56)
+    fnt_sub  = load_font("Lora-BoldItalic.ttf",           40)
+    fnt_poll = load_font("InstrumentSans-Bold.ttf",        34)
+    fnt_br   = load_font("InstrumentSans-Bold.ttf",        34)
+
+    # Pergunta no topo (sobre as fotos)
+    cy_top = 80
+    cy_top = script_outlined_wrap(
+        draw, "qual você pediria agora?",
+        fnt_sc, W - 80, cx, cy_top,
+        fill=OURO_P, ol_col=(10, 4, 1), ol=2, line_sp=4
+    )
+
+    # Nomes dos produtos em cada metade
+    nome_y = FOTO_H - 200
+    # Lado A — Risólis
+    bb_a = draw.textbbox((0, 0), "risólis", font=fnt_nome)
+    draw.text((HALF // 2 - (bb_a[2] - bb_a[0]) // 2, nome_y),
+              "risólis", font=fnt_nome, fill=BRANCO)
+    bb_a2 = draw.textbbox((0, 0), "o mais pedido", font=fnt_sub)
+    draw.text((HALF // 2 - (bb_a2[2] - bb_a2[0]) // 2, nome_y + 68),
+              "o mais pedido", font=fnt_sub, fill=OURO_P)
+
+    # Lado B — Mini Hambúrguer
+    bb_b = draw.textbbox((0, 0), "mini hambúrguer", font=fnt_nome)
+    draw.text((HALF + HALF // 2 - (bb_b[2] - bb_b[0]) // 2, nome_y),
+              "mini hambúrguer", font=fnt_nome, fill=BRANCO)
+    bb_b2 = draw.textbbox((0, 0), "o novo destaque", font=fnt_sub)
+    draw.text((HALF + HALF // 2 - (bb_b2[2] - bb_b2[0]) // 2, nome_y + 68),
+              "o novo destaque", font=fnt_sub, fill=OURO_P)
+
+    # Zona inferior — preenche fundo creme e faz gradiente suave
+    poll_y = FOTO_H
+    draw.rectangle([0, poll_y, W - 1, H - 1], fill=CREME)
+    for gy in range(100):
+        t = gy / 100
+        draw.line([(0, poll_y + gy), (W, poll_y + gy)],
+                  fill=lerp((18, 8, 2), CREME, t))
+
+    # Instrução — legível no fundo claro, gramaticalmente correta
+    fnt_poll_lg = load_font("InstrumentSans-Bold.ttf", 40)
+    inst_y = poll_y + 130
+    inst = "use a enquete abaixo para votar"
+    bb_i = draw.textbbox((0, 0), inst, font=fnt_poll_lg)
+    iw = bb_i[2] - bb_i[0]
+    ih = bb_i[3] - bb_i[1]
+    draw.text((cx - iw // 2, inst_y), inst, font=fnt_poll_lg, fill=TXT)
+
+    # Seta apontando pra baixo (sticker vai abaixo)
+    arr_cx = cx
+    arr_y_top = inst_y + ih + 22
+    draw.polygon(
+        [(arr_cx - 20, arr_y_top),
+         (arr_cx + 20, arr_y_top),
+         (arr_cx,      arr_y_top + 32)],
+        fill=OURO
+    )
+
+    # Ornamento separador antes da marca
+    orn_y = H - 108
+    draw.line([(cx - 80, orn_y), (cx - 12, orn_y)], fill=OURO_S, width=1)
+    draw.line([(cx + 12, orn_y), (cx + 80, orn_y)], fill=OURO_S, width=1)
+    diamond(draw, cx, orn_y, 5, OURO_S)
+
+    # Marca
+    br_b = draw.textbbox((0, 0), "Ok Delícias com Amor", font=fnt_br)
+    draw.text((cx - (br_b[2] - br_b[0]) // 2, H - 72),
+              "Ok Delícias com Amor", font=fnt_br, fill=TXT_M)
+
+    border(draw, col=OURO_S)
+    out = os.path.join(BASE_DIR, "02 - Criativos", "maio26", "story_maio26_2.png")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    img.convert("RGB").save(out, "PNG", quality=98)
+    print(f"Salvo: {out}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# STORY 3 — CTA: "resultado amanhã. hoje, garante o seu."
+# ─────────────────────────────────────────────────────────────────────────────
+def story_3():
+    img  = bg_grad(PESSEGO, CREME)
+    draw = ImageDraw.Draw(img)
+    cx   = W // 2
+
+    fnt_sc  = load_font("NothingYouCouldDo-Regular.ttf",  76)
+    fnt_tit = load_font("Lora-Bold.ttf",                  96)
+    fnt_sub = load_font("Lora-BoldItalic.ttf",             50)
+    fnt_det = load_font("Lora-Italic.ttf",                 42)
+    fnt_cta = load_font("InstrumentSans-Bold.ttf",         42)
+    fnt_br  = load_font("InstrumentSans-Bold.ttf",         36)
+
+    # Flores topo
+    for fx, col_o in [(66, (220, 185, 120)), (W - 66, (205, 168, 100))]:
+        draw_flower(draw, fx, 96, petals=6, plen=14, pw=7,
+                    col_out=col_o, col_mid=OURO_P, cr=5)
+        draw_leaf(draw, fx - 12, 110, 225, 13, 5)
+        draw_leaf(draw, fx + 12, 110, 315, 13, 5)
+
+    cy = 540
+
+    # Script
+    cy = script_outlined_wrap(
+        draw, "resultado amanhã.",
+        fnt_sc, W - 120, cx, cy,
+        fill=OURO_S, ol_col=(180, 130, 40), ol=2, line_sp=4
+    ) + 28
+
+    # Ornamento
+    draw.line([(cx - 90, cy), (cx - 16, cy)], fill=OURO, width=2)
+    draw.line([(cx + 16, cy), (cx + 90, cy)], fill=OURO, width=2)
+    diamond(draw, cx, cy, 6, OURO)
+    cy += 44
+
+    # Título
+    cy = wrap_centered(
+        draw, "hoje, garante o seu.",
+        fnt_tit, W - 80, cx, cy,
+        fill=TXT, shadow=True, shd_col=(210, 188, 148), line_spacing=12
+    ) + 20
+
+    # Divisor
+    draw.line([(cx - 100, cy), (cx + 100, cy)], fill=(195, 168, 105), width=1)
+    cy += 30
+
+    # Suporte
+    cy = wrap_centered(
+        draw, "enquanto o resultado não sai, a agenda da Oliete segue enchendo.",
+        fnt_det, W - 120, cx, cy,
+        fill=(110, 78, 38), line_spacing=12
+    ) + 44
+
+    # CTA box — link sticker vai em cima
+    cta_text = "veja o cardápio completo"
+    cta_w, cta_h, r = 720, 100, 20
+    cta_x = cx - cta_w // 2
+    draw.rounded_rectangle([cta_x, cy, cta_x + cta_w, cy + cta_h],
+                            radius=r, fill=OURO, outline=OURO_P, width=2)
+    bb = draw.textbbox((0, 0), cta_text, font=fnt_cta)
+    draw.text((cx - (bb[2] - bb[0]) // 2,
+               cy + (cta_h - (bb[3] - bb[1])) // 2),
+              cta_text, font=fnt_cta, fill=BRANCO)
+    arr_x = cta_x + cta_w - 42
+    arr_y = cy + cta_h // 2
+    draw.polygon([(arr_x, arr_y - 10), (arr_x + 18, arr_y), (arr_x, arr_y + 10)],
+                 fill=OURO_P)
+    cy += cta_h + 12
+
+    lbl = "link disponivel no story"
+    bb_l = draw.textbbox((0, 0), lbl, font=fnt_br)
+    draw.text((cx - (bb_l[2] - bb_l[0]) // 2, cy),
+              lbl, font=load_font("InstrumentSans-Bold.ttf", 28), fill=(150, 110, 55))
+
+    # Flores base
+    for fx in [66, W - 66]:
+        draw_flower(draw, fx, H - 130, petals=6, plen=13, pw=6,
+                    col_out=(210, 175, 100), col_mid=OURO_P, cr=5)
+
+    # Marca
+    br_b = draw.textbbox((0, 0), "Ok Delícias com Amor", font=fnt_br)
+    draw.text((cx - (br_b[2] - br_b[0]) // 2, H - 68),
+              "Ok Delícias com Amor", font=fnt_br, fill=TXT_M)
+
+    border(draw, col=OURO_S)
+    out = os.path.join(BASE_DIR, "02 - Criativos", "maio26", "story_maio26_3.png")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     img.convert("RGB").save(out, "PNG", quality=98)
     print(f"Salvo: {out}")
@@ -423,4 +452,4 @@ if __name__ == "__main__":
     story_1()
     story_2()
     story_3()
-    print("3 Stories 25/05 prontos.")
+    print("3 Stories 26/05 prontos.")
