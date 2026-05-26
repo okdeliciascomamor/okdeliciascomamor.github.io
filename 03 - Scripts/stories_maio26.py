@@ -4,7 +4,7 @@
 
 Arc: enquete de cardápio — o seguidor decide
 Story 1: Hook "hoje você decide." — gradiente, sem foto
-Story 2: Batalha split screen Risólis vs Mini Hambúrguer — espaço pro poll sticker
+Story 2: Batalha split screen Risoles vs Mini Hambúrguer — espaço pro poll sticker
 Story 3: CTA "resultado amanhã. hoje, garante o seu."
 """
 
@@ -235,7 +235,7 @@ def story_1():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STORY 2 — Batalha split screen: Risólis vs Mini Hambúrguer
+# STORY 2 — Batalha split screen: Risoles vs Mini Hambúrguer
 # Espaço inferior reservado para poll sticker do Instagram
 # ─────────────────────────────────────────────────────────────────────────────
 def story_2():
@@ -252,7 +252,7 @@ def story_2():
     draw = ImageDraw.Draw(img)
     cx   = W // 2
 
-    # --- Foto esquerda: Risólis (IMG_1049) ---
+    # --- Foto esquerda: Risoles (IMG_1049) ---
     foto_a = crop_half(path_a, HALF, FOTO_H)
     ov_a   = Image.new("RGBA", (HALF, FOTO_H), OVL_DARK + (155,))
     fa     = foto_a.convert("RGBA")
@@ -294,10 +294,10 @@ def story_2():
 
     # Nomes dos produtos em cada metade
     nome_y = FOTO_H - 200
-    # Lado A — Risólis
-    bb_a = draw.textbbox((0, 0), "risólis", font=fnt_nome)
+    # Lado A — Risoles
+    bb_a = draw.textbbox((0, 0), "risoles", font=fnt_nome)
     draw.text((HALF // 2 - (bb_a[2] - bb_a[0]) // 2, nome_y),
-              "risólis", font=fnt_nome, fill=BRANCO)
+              "risoles", font=fnt_nome, fill=BRANCO)
     bb_a2 = draw.textbbox((0, 0), "o mais pedido", font=fnt_sub)
     draw.text((HALF // 2 - (bb_a2[2] - bb_a2[0]) // 2, nome_y + 68),
               "o mais pedido", font=fnt_sub, fill=OURO_P)
