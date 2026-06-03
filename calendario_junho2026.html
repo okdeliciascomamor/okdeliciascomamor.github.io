@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calendário Editorial Junho 2026 · Ok Delícias com Amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet" />
+<style>
+:root{--lavanda:#E6DEF5;--lavanda-m:#C4B5E0;--creme:#FFF8EA;--creme-f:#FCF0DA;
+--ouro:#C3983A;--ouro-c:#DCB95F;--ouro-s:#F0D282;--rosa:#F0D0DC;--lilas:#D0B6E4;
+--pessego:#FFE8C0;--verde:#94AC7C;--txt:#3A2812;--txt-m:#624624;--branco:#fff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--lavanda);font-family:'Instrument Sans',sans-serif;color:var(--txt);}
+.wrap{max-width:1080px;margin:0 auto;background:var(--creme);box-shadow:0 0 40px rgba(58,40,18,.12);}
+
+.header{background:linear-gradient(140deg,var(--lavanda),var(--creme) 55%,var(--pessego));
+border-bottom:2px solid var(--ouro-c);padding:42px 28px 30px;text-align:center;}
+.h-tag{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);margin-bottom:12px;}
+.h-brand{font-family:'Italiana',serif;font-size:clamp(28px,5vw,46px);color:var(--txt);line-height:1;}
+.h-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--ouro);margin-top:6px;}
+.h-badge{display:inline-block;margin-top:16px;background:var(--ouro);color:#fff;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:6px 22px;border-radius:22px;}
+.h-link{display:inline-block;margin-top:14px;font-size:13px;color:var(--txt-m);text-decoration:none;border-bottom:1px solid var(--ouro);padding-bottom:2px;}
+.h-link:hover{color:var(--ouro);}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;padding:18px 20px;background:var(--creme-f);border-bottom:1px solid var(--ouro-s);}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--txt-m);}
+.legend-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0;}
+.d-bas{background:#94AC7C;} .d-mesa{background:#FFE8C0;border:1px solid #C3983A;}
+.d-prova{background:#C3983A;} .d-sabor{background:#F0D0DC;} .d-fe{background:#D0B6E4;}
+
+.cad{font-size:12px;color:var(--txt-m);text-align:center;padding:12px 20px;background:var(--creme);border-bottom:1px solid var(--ouro-s);line-height:1.6;}
+.cad b{color:var(--ouro);}
+
+.week-block{margin:22px 16px 0;}
+.week-title{font-family:'Italiana',serif;font-size:16px;color:var(--ouro);letter-spacing:.08em;text-transform:uppercase;padding:6px 0 4px;border-bottom:1px solid var(--ouro-s);margin-bottom:12px;}
+.week-title span{font-family:'Instrument Sans';font-size:12px;color:var(--txt-m);letter-spacing:.04em;text-transform:none;margin-left:8px;}
+.week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
+
+.day-card{background:var(--branco);border-radius:14px;border:1px solid var(--ouro-s);overflow:hidden;position:relative;}
+.day-card.hoje{border:2px solid var(--ouro);box-shadow:0 0 0 3px rgba(195,152,58,.18);}
+.angulo-faixa{height:5px;}
+.a-bas{background:#94AC7C;} .a-mesa{background:#FFE8C0;} .a-prova{background:#C3983A;}
+.a-sabor{background:#F0D0DC;} .a-fe{background:#D0B6E4;}
+.card-header{padding:10px 14px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.card-date{font-family:'Italiana',serif;font-size:24px;color:var(--txt);line-height:1;}
+.card-weekday{font-size:11px;color:var(--txt-m);font-weight:600;text-transform:uppercase;letter-spacing:.08em;}
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:11px;}
+.b-post{background:#E8E0F5;color:#5A3E80;} .b-reel{background:#FFDDE8;color:#9B3060;}
+.b-carr{background:#D6EDD6;color:#3A6B3A;} .b-story{background:#FBE6C6;color:#9A6B1E;}
+.card-body{padding:8px 14px 14px;}
+.chip{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ouro);padding:2px 8px;border-radius:10px;margin-bottom:7px;}
+.chip.fe{background:#9A7FB8;} .chip.copa{background:#5A8A4A;} .chip.amor{background:#C9607E;}
+.card-title{font-family:'Italiana',serif;font-size:17px;color:var(--txt);margin-bottom:5px;line-height:1.25;}
+.card-hl{font-size:12.5px;font-weight:600;color:var(--txt-m);margin-bottom:4px;}
+.card-lg{font-family:'Lora',serif;font-style:italic;font-size:12px;color:#7A5C3A;line-height:1.5;}
+.posted-tag{position:absolute;top:0;right:0;background:var(--verde);color:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-bottom-left-radius:10px;}
+
+.day-rest{background:linear-gradient(135deg,#f8f4ff,#fff8ea);border:1px dashed var(--lilas);border-radius:14px;padding:14px;text-align:center;}
+.day-rest .card-date{font-size:20px;color:var(--txt-m);}
+.day-rest .card-weekday{color:#b0a0c0;}
+.rest-lbl{font-size:11px;color:#b39ec9;font-style:italic;margin-top:4px;}
+
+.fe-box{margin:26px 16px 6px;background:linear-gradient(140deg,#3A2812,#5A4326);border-radius:16px;padding:26px 30px;text-align:center;}
+.fe-box .v{font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,2.6vw,20px);color:#fff;line-height:1.4;max-width:640px;margin:0 auto 8px;}
+.fe-box .r{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ouro-c);}
+
+footer{background:var(--txt);padding:32px 28px;text-align:center;margin-top:24px;}
+footer .fn{font-family:'Italiana',serif;font-size:26px;color:#fff;}
+footer .fm{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.04em;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="header">
+  <div class="h-tag">Calendário Editorial · Execução Diária</div>
+  <div class="h-brand">Ok Delícias com Amor</div>
+  <div class="h-title">o que vai no ar, dia a dia</div>
+  <div class="h-badge">Junho 2026</div><br>
+  <a class="h-link" href="linha_editorial_junho2026.html">ver a linha editorial completa (estratégia do mês)</a>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot d-bas"></span>Bastidores e Feito à Mão</div>
+  <div class="legend-item"><span class="legend-dot d-mesa"></span>Mesa de Ocasião</div>
+  <div class="legend-item"><span class="legend-dot d-prova"></span>Prova e Confiança</div>
+  <div class="legend-item"><span class="legend-dot d-sabor"></span>Sabor e Cardápio</div>
+  <div class="legend-item"><span class="legend-dot d-fe"></span>Fé e Família</div>
+</div>
+<div class="cad">Cadência alvo: <b>4 posts no feed</b> + <b>3 Reels de bastidores</b> + <b>stories diários</b> (enquete, prova, cardápio, CTA) + <b>1 momento de fé no domingo</b>. Tema do mês: "Junho é de juntar".</div>
+
+<!-- SEMANA 1 -->
+<div class="week-block">
+  <div class="week-title">Semana 1 <span>01 a 07 · Abertura + Corpus Christi</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">01</div><div class="card-weekday">Seg</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Segunda de produção</div><div class="card-hl">o pan da entrega de domingo</div><div class="card-lg">"feito num domingo, direto da cozinha da Oli."</div></div></div>
+
+    <div class="day-card hoje"><div class="posted-tag">Postado</div><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">02</div><div class="card-weekday">Ter · Hoje</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">A herança da Dona Wilma</div><div class="card-hl">storytelling em 5 telas</div><div class="card-lg">"o dom veio dela. agora sim."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">03</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Junho é de juntar</div><div class="card-hl">abertura do tema do mês</div><div class="card-lg">"mês frio, mês de reunir. a mesa cheia é o centro."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">04</div><div class="card-weekday">Qui</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><span class="chip fe">Corpus Christi</span><div class="card-title">Feriado de família</div><div class="card-hl">almoço de feriado + momento de fé</div><div class="card-lg">"encomenda pro feriado prolongado, e gratidão."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">05</div><div class="card-weekday">Sex</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Bastidores</div><div class="card-hl">a massa, o forno, a mão</div><div class="card-lg">"vem ver como nasce o salgado."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">06</div><div class="card-weekday">Sáb</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Entregas saindo</div><div class="card-hl">prova social do fim de semana</div><div class="card-lg">"quem provou uma vez não pede de outro lugar."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">07</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Domingo sereno</div><div class="card-hl">Salmo 46, tom quente</div><div class="card-lg">"Deus é o nosso refúgio e fortaleza."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 2 -->
+<div class="week-block">
+  <div class="week-title">Semana 2 <span>08 a 14 · A semana forte (Copa + Namorados)</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">08</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">A semana mais cheia</div><div class="card-hl">aquecimento + enquete nos stories</div><div class="card-lg">"vai ver o jogo onde? a gente cuida do petisco."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">09</div><div class="card-weekday">Ter</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Bastidores</div><div class="card-hl">produção a todo vapor</div><div class="card-lg">"a cozinha não para essa semana."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">10</div><div class="card-weekday">Qua</div></div><span class="badge b-carr">Carrossel</span></div>
+      <div class="card-body"><div class="card-title">Kit de jogo</div><div class="card-hl">opções pra assistir em casa</div><div class="card-lg">"finger food pra galera, fresquinho."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">11</div><div class="card-weekday">Qui</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><span class="chip copa">Abre a Copa</span><div class="card-title">Tarde de jogo</div><div class="card-hl">petisco pra assistir junto</div><div class="card-lg">"jogo é melhor com a mesa cheia."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">12</div><div class="card-weekday">Sex</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><span class="chip amor">Namorados</span><div class="card-title">Amor também se serve no prato</div><div class="card-hl">jantar a dois ou em família</div><div class="card-lg">"caprichado, do jeito da nossa região."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">13</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">No clima de Santo Antônio</div><div class="card-hl">aceno junino leve</div><div class="card-lg">"quentinho, sem virar arraial."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">14</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Domingo em família</div><div class="card-hl">gratidão pela semana</div><div class="card-lg">"a mesa que reúne é bênção."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 3 -->
+<div class="week-block">
+  <div class="week-title">Semana 3 <span>15 a 21 · Frio, prova e Copa rolando</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">15</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Quem pediu, volta</div><div class="card-hl">depoimento / prova social</div><div class="card-lg">"a reputação se constrói festa a festa."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">16</div><div class="card-weekday">Ter</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Bastidores</div><div class="card-hl">o cuidado de cada peça</div><div class="card-lg">"feito à mão, um por um."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">17</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Destaque do cardápio</div><div class="card-hl">Prensadinho e empadinha de legumes</div><div class="card-lg">"sabor que é herança."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">18</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip copa">Copa</span><div class="card-title">Próximo jogo</div><div class="card-hl">lembrete de encomenda</div><div class="card-lg">"próximo jogo, próxima encomenda."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">19</div><div class="card-weekday">Sex</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Friozinho pede</div><div class="card-hl">comfort food, quentinho</div><div class="card-lg">"o quentinho feito na hora."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">20</div><div class="card-weekday">Sáb</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Entregas do dia</div><div class="card-hl">prova + agenda enchendo</div><div class="card-lg">"saindo fresquinho pra tua mesa."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">21</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip">Inverno começa</span><div class="card-title">Domingo de fé e frio</div><div class="card-hl">Salmo 46 + "frio pede salgado quente"</div><div class="card-lg">"reunir aquece mais que o forno."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 4 -->
+<div class="week-block">
+  <div class="week-title">Semana 4 <span>22 a 28 · São João leve + ritmo</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">22</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Conforto de inverno</div><div class="card-hl">salgado quentinho no frio</div><div class="card-lg">"a casa fica mais quente com mesa cheia."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">23</div><div class="card-weekday">Ter</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Bastidores</div><div class="card-hl">a variedade saindo</div><div class="card-lg">"pastel, canudo, empadinha, prensadinho."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">24</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><span class="chip">São João</span><div class="card-title">No clima junino</div><div class="card-hl">toque leve e elegante</div><div class="card-lg">"a festa pede finger food caprichado."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">25</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Enquete de sabores</div><div class="card-hl">engajamento + cardápio do dia</div><div class="card-lg">"qual é o teu salgado preferido?"</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-bas"></div>
+      <div class="card-header"><div><div class="card-date">26</div><div class="card-weekday">Sex</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><div class="card-title">Bastidores</div><div class="card-hl">do ingrediente ao forno</div><div class="card-lg">"feito na hora, com calma."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">27</div><div class="card-weekday">Sáb</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Mesa que as pessoas fotografam</div><div class="card-hl">desejo + prova</div><div class="card-lg">"salgado que entra na foto antes de comer."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">28</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Domingo em família</div><div class="card-hl">gratidão e descanso</div><div class="card-lg">"o que se faz com amor, alimenta duas vezes."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 5 -->
+<div class="week-block">
+  <div class="week-title">Semana 5 <span>29 a 30 · São Pedro + ponte pra julho</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-mesa"></div>
+      <div class="card-header"><div><div class="card-date">29</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><span class="chip">São Pedro</span><div class="card-title">Fecha o ciclo junino</div><div class="card-hl">último aceno da temporada</div><div class="card-lg">"junho foi de juntar, e que venha julho."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">30</div><div class="card-weekday">Ter</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Fechamento do mês</div><div class="card-hl">gancho pra julho (férias, mais festas)</div><div class="card-lg">"já pensou no que vem aí? chama pra reservar."</div></div></div>
+  </div>
+</div>
+
+<div class="fe-box">
+  <div class="v">"Deus é o nosso refúgio e fortaleza, socorro bem presente nas tribulações."</div>
+  <div class="r">Salmo 46:1 · âncora de fé do mês, para domingos e Corpus Christi</div>
+</div>
+
+<footer>
+  <div class="fn">Ok Delícias com Amor</div>
+  <div class="fm">@ok_deliciascomamor · (55) 99928-5883 · Santo Cristo, RS · Calendário Editorial Junho 2026</div>
+</footer>
+
+</div>
+</body>
+</html>
