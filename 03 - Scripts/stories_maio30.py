@@ -53,11 +53,27 @@ BRANCO     = (255, 255, 255)
 W, H = 1080, 1920
 
 
+# Substitutos quando a fonte pedida nao existe nesta sessao (o FONTS_DIR varia
+# por sessao). Cormorant some as vezes; CrimsonPro-Italic e o sub mais proximo.
+_FONT_FALLBACKS = {
+    "CormorantGaramond-SemiBoldItalic.ttf":
+        ["CrimsonPro-Italic.ttf", "Lora-Italic.ttf", "IBMPlexSerif-Italic.ttf"],
+}
+_GENERIC_FALLBACKS = ["Lora-Regular.ttf", "InstrumentSans-Regular.ttf"]
+
+
 def load_font(name, size):
     try:
         return ImageFont.truetype(os.path.join(FONTS_DIR, name), size)
     except Exception:
-        return ImageFont.load_default()
+        pass
+    # tenta substitutos especificos e depois genericos, preservando o tamanho
+    for alt in _FONT_FALLBACKS.get(name, []) + _GENERIC_FALLBACKS:
+        try:
+            return ImageFont.truetype(os.path.join(FONTS_DIR, alt), size)
+        except Exception:
+            continue
+    return ImageFont.load_default()
 
 
 def lerp(a, b, t):

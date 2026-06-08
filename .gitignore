@@ -13,3 +13,34 @@ desktop.ini
 # Temporários
 *.tmp
 *.bak
+
+# Material bruto e fontes pesadas (ficam no Drive, nao no git)
+Material*/
+drive-download-*.zip
+fotos/
+**/drive_zip/
+
+# Videos (entrada e saida) - repo so com entregaveis leves
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.heic
+*.HEIC
+*.mkv
+*.avi
+
+# Pastas de trabalho temporarias e overlays tecnicos
+**/_work/
+**/_segments/
+**/_teaser_seg/
+**/_frames/
+**/_scan/
+**/_crop/
+**/_fry/
+**/_ball/
+**/_mc/
+**/_mc2/
+**/overlays/
+**/unpacked_docx/
+doc_text.txt
