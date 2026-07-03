@@ -37,6 +37,7 @@ border-bottom:2px solid var(--ouro-c);padding:42px 28px 30px;text-align:center;}
 .week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
 
 .day-card{background:var(--branco);border-radius:14px;border:1px solid var(--ouro-s);overflow:hidden;position:relative;}
+.day-card.hoje{border:2px solid var(--ouro);box-shadow:0 0 0 3px rgba(195,152,58,.18);}
 .angulo-faixa{height:5px;}
 .a-serv{background:#FFE8C0;} .a-cozinha{background:#94AC7C;} .a-sabor{background:#F0D0DC;}
 .a-prova{background:#C3983A;} .a-fe{background:#D0B6E4;}
@@ -87,15 +88,15 @@ footer .fm{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.04em;margin
   <div class="week-title">Semana 1 <span>01 a 05 · Abertura: o mês de servir</span></div>
   <div class="week-grid">
     <div class="day-card"><div class="angulo-faixa a-serv"></div>
-      <div class="card-header"><div><div class="card-date">01</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
-      <div class="card-body"><div class="card-title">Julho é de servir</div><div class="card-hl">abertura do tema do mês</div><div class="card-lg">"servir a sua mesa é o nosso jeito de amar."</div></div></div>
+      <div class="card-header"><div><div class="card-date">01</div><div class="card-weekday">Qua</div></div><span class="badge" style="background:#ece7df;color:#9a8f7d;">Sem post</span></div>
+      <div class="card-body"><div class="card-title">Julho é de servir</div><div class="card-hl">post na gaveta, não foi publicado</div><div class="card-lg">"servir a sua mesa é o nosso jeito de amar."</div></div></div>
 
     <div class="day-card"><div class="angulo-faixa a-sabor"></div>
-      <div class="card-header"><div><div class="card-date">02</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
-      <div class="card-body"><div class="card-title">O que não pode faltar</div><div class="card-hl">enquete que aquece a estreia de sábado</div><div class="card-lg">"qual salgado é presença certa na reunião da sua família?"</div></div></div>
+      <div class="card-header"><div><div class="card-date">02</div><div class="card-weekday">Qui</div></div><span class="badge" style="background:#ece7df;color:#9a8f7d;">Sem post</span></div>
+      <div class="card-body"><div class="card-title">O que não pode faltar</div><div class="card-hl">enquete não publicada (segue valendo)</div><div class="card-lg">"qual salgado é presença certa na reunião da sua família?"</div></div></div>
 
-    <div class="day-card"><div class="angulo-faixa a-serv"></div>
-      <div class="card-header"><div><div class="card-date">03</div><div class="card-weekday">Sex</div></div><span class="badge b-post">Post</span></div>
+    <div class="day-card hoje"><div class="angulo-faixa a-serv"></div>
+      <div class="card-header"><div><div class="card-date">03</div><div class="card-weekday">Sex · Hoje</div></div><span class="badge b-post">Post</span></div>
       <div class="card-body"><div class="card-title">A mesa que reúne</div><div class="card-hl">servir e a casa cheia no frio</div><div class="card-lg">"mesa boa é a que junta gente. e no inverno junta mais."</div></div></div>
 
     <div class="day-card"><div class="angulo-faixa a-cozinha"></div>
