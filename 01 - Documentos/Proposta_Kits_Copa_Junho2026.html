@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proposta de Combos · Copa e Namorados · Ok Delícias com Amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Gloock&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --lav:#E6DEF5; --lav-m:#C4B5E0; --creme:#FFF8EA; --creme-f:#FCF0DA;
+  --ouro:#C3983A; --ouro-c:#DCB95F; --ouro-s:#F0D282; --pess:#FFE8C0;
+  --terra:#3A2812; --txt:#3A2812; --txt-m:#624624; --branco:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Instrument Sans',sans-serif;background:var(--lav);color:var(--txt);line-height:1.55;}
+.wrap{max-width:780px;margin:0 auto;background:var(--creme);box-shadow:0 0 40px rgba(58,40,18,.14);}
+
+header{background:linear-gradient(140deg,var(--lav),var(--creme) 55%,var(--pess));
+  border-bottom:2px solid var(--ouro-c);padding:46px 36px 34px;text-align:center;}
+.h-kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ouro);margin-bottom:12px;}
+.h-brand{font-family:'Italiana',serif;font-size:44px;color:var(--txt);line-height:1;}
+.h-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;color:var(--ouro);margin-top:8px;}
+.h-tag{display:inline-block;margin-top:16px;background:var(--ouro);color:#fff;font-weight:600;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;padding:6px 20px;border-radius:22px;}
+
+.intro{padding:28px 36px 6px;}
+.intro p{font-size:15px;color:var(--txt-m);margin-bottom:12px;}
+.intro b{color:var(--txt);}
+.callout{background:var(--creme-f);border-left:3px solid var(--ouro);border-radius:8px;
+  padding:14px 18px;margin:8px 0 4px;font-size:14px;color:var(--txt-m);}
+.callout b{color:var(--txt);}
+
+.sec-div{display:flex;align-items:center;gap:12px;padding:30px 36px 10px;}
+.sec-div span{flex:1;height:1px;background:rgba(195,152,58,.3);}
+.sec-div em{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro);font-style:normal;white-space:nowrap;}
+
+.kits{padding:6px 36px 0;}
+.kit{background:#fff;border:1px solid rgba(195,152,58,.25);border-radius:16px;padding:20px 22px;margin-bottom:14px;position:relative;}
+.kit.top{border:1.6px solid var(--ouro);background:linear-gradient(135deg,#fff,var(--pess));}
+.kit-badge{position:absolute;top:-11px;right:18px;background:var(--ouro);color:#fff;font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:14px;}
+.kit-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.kit-nome{font-family:'Gloock',serif;font-size:24px;color:var(--txt);}
+.kit-serve{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--ouro);}
+.kit-serve b{font-family:'Gloock',serif;font-style:normal;font-size:23px;color:var(--ouro);}
+.kit-comp{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px;}
+.chip{font-size:13px;font-weight:500;color:var(--txt-m);background:var(--pess);border:1px solid rgba(195,152,58,.3);
+  padding:5px 13px;border-radius:18px;}
+.preco-linha{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(195,152,58,.18);padding-top:14px;}
+.preco-tag{font-family:'Gloock',serif;font-size:26px;color:#fff;background:var(--ouro);
+  padding:6px 20px;border-radius:12px;white-space:nowrap;}
+.preco-obs{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--txt-m);}
+
+table.resumo{width:calc(100% - 72px);margin:6px 36px 0;border-collapse:collapse;font-size:13.5px;}
+table.resumo th,table.resumo td{padding:11px 12px;text-align:left;border-bottom:1px solid rgba(195,152,58,.2);}
+table.resumo th{background:var(--terra);color:#fff;font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+table.resumo th:first-child{border-top-left-radius:10px;}
+table.resumo th:last-child{border-top-right-radius:10px;}
+table.resumo td.num{text-align:right;font-family:'Gloock',serif;color:var(--ouro);}
+table.resumo tr:nth-child(even){background:rgba(255,255,255,.5);}
+
+.decisoes{margin:6px 36px 0;background:var(--lav);border-radius:14px;padding:22px 24px;}
+.decisoes h3{font-family:'Italiana',serif;font-size:22px;color:var(--txt);margin-bottom:6px;}
+.decisoes .sub{font-size:13px;color:var(--txt-m);margin-bottom:14px;}
+.decisoes ol{margin-left:18px;}
+.decisoes li{font-size:14.5px;color:var(--txt);margin-bottom:10px;padding-left:4px;}
+.decisoes li b{color:var(--ouro);}
+
+.notas{padding:24px 36px 6px;}
+.notas h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro);margin-bottom:10px;}
+.notas ul{margin-left:18px;}
+.notas li{font-size:13px;color:var(--txt-m);margin-bottom:7px;}
+
+footer{margin-top:26px;background:var(--terra);padding:28px 36px;text-align:center;}
+footer .fn{font-family:'Italiana',serif;font-size:24px;color:#fff;}
+footer .fm{font-size:12px;color:rgba(255,255,255,.78);margin-top:6px;letter-spacing:.03em;}
+footer .fd{font-size:11px;color:rgba(255,255,255,.5);margin-top:10px;}
+
+.print-btn{display:block;width:calc(100% - 72px);margin:24px 36px 8px;background:var(--ouro);color:#fff;border:none;
+  border-radius:12px;padding:14px;font-size:14px;font-weight:600;letter-spacing:.04em;cursor:pointer;font-family:inherit;}
+.print-btn:hover{background:#a87f2a;}
+
+@media print{
+  body{background:#fff;} .wrap{box-shadow:none;max-width:100%;} .print-btn{display:none;}
+  .kit,.decisoes,.callout{break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="h-kicker">Proposta de Combos · Uso Interno</div>
+  <div class="h-brand">Ok Delícias com Amor</div>
+  <div class="h-title">Semana da Copa e do Dia dos Namorados</div>
+  <div class="h-tag">Encomendas de 11 a 15 de junho</div>
+</header>
+
+<div class="intro">
+  <p>Oli, montei <b>6 combos de salgado</b> pra essa semana de jogos e Dia dos Namorados, do jantar a dois até a casa cheia. A ideia é facilitar pra quem vai receber gente em casa: a pessoa escolhe pelo <b>tamanho da turma</b> e a gente já monta tudo combinado, sortido, do nosso jeito.</p>
+  <div class="callout">
+    <b>Importante:</b> no post do Instagram o preço <b>não aparece</b> (valor na tela assusta e afasta). A pessoa vê os combos, se encanta, e entra em contato pelo link da bio ou pelo direct. É na conversa que a gente passa o valor. Os preços abaixo são o <b>teu cardápio de sempre</b>, só já somado por combo, pra gente ter na mão na hora do papo.
+  </div>
+</div>
+
+<div class="sec-div"><span></span><em>Os 6 Combos</em><span></span></div>
+
+<div class="kits">
+
+  <div class="kit">
+    <div class="kit-head">
+      <div class="kit-nome">A Dois</div>
+      <div class="kit-serve">serve <b>2 a 3</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">30 salgados sortidos</span>
+      <span class="chip">gancho de Namorados</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 50</span>
+      <span class="preco-obs">o jantar a dois, feito à mão</span>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-head">
+      <div class="kit-nome">Roda de Casa</div>
+      <div class="kit-serve">serve <b>4 a 6</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">50 salgados sortidos</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 85</span>
+      <span class="preco-obs">a tarde sem pressa</span>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-head">
+      <div class="kit-nome">Esquenta</div>
+      <div class="kit-serve">serve <b>8 a 10</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">100 salgados sortidos</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 170</span>
+      <span class="preco-obs">a roda pequena, a conversa boa</span>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-head">
+      <div class="kit-nome">Tarde de Jogo</div>
+      <div class="kit-serve">serve <b>18 a 20</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">200 salgados sortidos</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 340</span>
+      <span class="preco-obs">a sala cheia, todo mundo de olho na TV</span>
+    </div>
+  </div>
+
+  <div class="kit top">
+    <div class="kit-badge">O mais pedido</div>
+    <div class="kit-head">
+      <div class="kit-nome">Galera Completa</div>
+      <div class="kit-serve">serve <b>28 a 30</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">300 sortidos</span>
+      <span class="chip">50 mini hambúrguer</span>
+      <span class="chip">15 canudos</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 712</span>
+      <span class="preco-obs">quando convidam mais um, e mais um</span>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-head">
+      <div class="kit-nome">Festa do Título</div>
+      <div class="kit-serve">serve <b>45 a 50</b> pessoas</div>
+    </div>
+    <div class="kit-comp">
+      <span class="chip">500 sortidos</span>
+      <span class="chip">100 mini hambúrguer</span>
+      <span class="chip">20 prensadinhos</span>
+    </div>
+    <div class="preco-linha">
+      <span class="preco-tag">R$ 1.236</span>
+      <span class="preco-obs">a casa vira arquibancada</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="sec-div"><span></span><em>Resumo</em><span></span></div>
+
+<table class="resumo">
+  <tr>
+    <th>Combo</th><th>Serve</th><th>O que vem</th><th style="text-align:right;">Preço</th>
+  </tr>
+  <tr><td><b>A Dois</b></td><td>2 a 3</td><td>30 sortidos</td><td class="num">R$ 50</td></tr>
+  <tr><td><b>Roda de Casa</b></td><td>4 a 6</td><td>50 sortidos</td><td class="num">R$ 85</td></tr>
+  <tr><td><b>Esquenta</b></td><td>8 a 10</td><td>100 sortidos</td><td class="num">R$ 170</td></tr>
+  <tr><td><b>Tarde de Jogo</b></td><td>18 a 20</td><td>200 sortidos</td><td class="num">R$ 340</td></tr>
+  <tr><td><b>Galera Completa</b></td><td>28 a 30</td><td>300 sortidos, 50 mini hambúrguer, 15 canudos</td><td class="num">R$ 712</td></tr>
+  <tr><td><b>Festa do Título</b></td><td>45 a 50</td><td>500 sortidos, 100 mini hambúrguer, 20 prensadinhos</td><td class="num">R$ 1.236</td></tr>
+</table>
+
+<div class="sec-div"><span></span><em>O que eu preciso de ti</em><span></span></div>
+
+<div class="decisoes">
+  <h3>Só pra alinhar</h3>
+  <div class="sub">O preço é o teu cardápio de sempre, só já somado. Eu preciso confirmar contigo o que é da produção.</div>
+  <ol>
+    <li>Tu <b>consegue produzir</b> essas quantidades na semana? Tem um teto por dia que eu preciso respeitar quando for fechar os pedidos?</li>
+    <li>Os combos pequenos (<b>A Dois</b> com 30 e <b>Roda de Casa</b> com 50) dependem de tu fazer <b>meio cento ou fração</b>. Isso é tranquilo, ou tu prefere começar a escada só no cento cheio (Esquenta)?</li>
+    <li>Os preços batem com o teu cardápio? Se quiser <b>arredondar</b> algum só pra ficar um número mais redondo na hora de falar com o cliente, me diz.</li>
+  </ol>
+</div>
+
+<div class="notas">
+  <h4>Notas</h4>
+  <ul>
+    <li>O preço de cada combo é o <b>teu cardápio aplicado à quantidade</b> (R$ 170 o cento na Linha Principal, mini hambúrguer R$ 3,50 a unidade, canudo R$ 180 o cento). Sem desconto e sem pegadinha, é o de sempre, só já combinado num pacote.</li>
+    <li><b>Sortido</b> quer dizer que a gente monta o mix (risoles, coxinha, pastel, assado), assim o cliente decide menos e tu produz no teu ritmo.</li>
+    <li>A régua de pessoas é uma estimativa de petisco (1 cento serve de 8 a 10). Quem quiser refeição come mais, e a gente ajusta.</li>
+    <li>Pedido mínimo já no cardápio: canoinha, canudo e canoinha premium 15 peças, prensadinho 20, mini hambúrguer 10.</li>
+    <li>O foco é <b>encomenda com antecedência</b>. A agenda da semana enche rápido, então quanto antes a gente fecha, melhor a gente garante a data.</li>
+  </ul>
+</div>
+
+<button class="print-btn" onclick="window.print()">Imprimir ou salvar em PDF</button>
+
+<footer>
+  <div class="fn">Ok Delícias com Amor</div>
+  <div class="fm">Fabricio Kaempf · Estrategista Digital</div>
+  <div class="fd">Documento de uso interno · 10/06/2026</div>
+</footer>
+
+</div>
+</body>
+</html>
