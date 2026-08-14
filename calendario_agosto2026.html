@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calendário Editorial Agosto 2026 · Ok Delícias com Amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet" />
+<style>
+:root{--lavanda:#E6DEF5;--lavanda-m:#C4B5E0;--creme:#FFF8EA;--creme-f:#FCF0DA;
+--ouro:#C3983A;--ouro-c:#DCB95F;--ouro-s:#F0D282;--rosa:#F0D0DC;--lilas:#D0B6E4;
+--pessego:#FFE8C0;--verde:#94AC7C;--azul:#8FA9C4;--txt:#3A2812;--txt-m:#624624;--branco:#fff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--lavanda);font-family:'Instrument Sans',sans-serif;color:var(--txt);}
+.wrap{max-width:1080px;margin:0 auto;background:var(--creme);box-shadow:0 0 40px rgba(58,40,18,.12);}
+
+.header{background:linear-gradient(140deg,var(--lavanda),var(--creme) 55%,var(--pessego));
+border-bottom:2px solid var(--ouro-c);padding:42px 28px 30px;text-align:center;}
+.h-tag{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);margin-bottom:12px;}
+.h-brand{font-family:'Italiana',serif;font-size:clamp(28px,5vw,46px);color:var(--txt);line-height:1;}
+.h-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--ouro);margin-top:6px;}
+.h-badge{display:inline-block;margin-top:16px;background:var(--ouro);color:#fff;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:6px 22px;border-radius:22px;}
+.h-verse{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--txt-m);margin-top:16px;}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;padding:18px 20px;background:var(--creme-f);border-bottom:1px solid var(--ouro-s);}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--txt-m);}
+.legend-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0;}
+.d-pais{background:#8FA9C4;} .d-cozinha{background:#94AC7C;}
+.d-sabor{background:#F0D0DC;} .d-prova{background:#C3983A;} .d-fe{background:#D0B6E4;}
+
+.cad{font-size:12px;color:var(--txt-m);text-align:center;padding:12px 20px;background:var(--creme);border-bottom:1px solid var(--ouro-s);line-height:1.6;}
+.cad b{color:var(--ouro);}
+
+.alerta{background:#FFF3E0;border-left:4px solid var(--ouro);margin:18px 16px 0;padding:14px 18px;font-size:13px;color:var(--txt-m);line-height:1.6;border-radius:0 10px 10px 0;}
+.alerta b{color:var(--txt);}
+
+.week-block{margin:22px 16px 0;}
+.week-title{font-family:'Italiana',serif;font-size:16px;color:var(--ouro);letter-spacing:.08em;text-transform:uppercase;padding:6px 0 4px;border-bottom:1px solid var(--ouro-s);margin-bottom:12px;}
+.week-title span{font-family:'Instrument Sans';font-size:12px;color:var(--txt-m);letter-spacing:.04em;text-transform:none;margin-left:8px;}
+.week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
+
+.day-card{background:var(--branco);border-radius:14px;border:1px solid var(--ouro-s);overflow:hidden;position:relative;}
+.day-card.hoje{border:2px solid var(--ouro);box-shadow:0 0 0 3px rgba(195,152,58,.18);}
+.day-card.destaque{border:2px solid #8FA9C4;box-shadow:0 0 0 3px rgba(143,169,196,.20);}
+.posted-tag{position:absolute;top:0;right:0;background:var(--verde);color:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-bottom-left-radius:10px;}
+.angulo-faixa{height:5px;}
+.a-pais{background:#8FA9C4;} .a-cozinha{background:#94AC7C;} .a-sabor{background:#F0D0DC;}
+.a-prova{background:#C3983A;} .a-fe{background:#D0B6E4;}
+.card-header{padding:10px 14px 6px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.card-date{font-family:'Italiana',serif;font-size:24px;color:var(--txt);line-height:1;}
+.card-weekday{font-size:11px;color:var(--txt-m);font-weight:600;text-transform:uppercase;letter-spacing:.08em;}
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:11px;}
+.b-post{background:#E8E0F5;color:#5A3E80;} .b-reel{background:#FFDDE8;color:#9B3060;}
+.b-carr{background:#D6EDD6;color:#3A6B3A;} .b-story{background:#FBE6C6;color:#9A6B1E;}
+.card-body{padding:8px 14px 14px;}
+.chip{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ouro);padding:2px 8px;border-radius:10px;margin-bottom:7px;}
+.chip.serie{background:#6E8A55;} .chip.fe{background:#9A7FB8;} .chip.data{background:#C9607E;}
+.chip.pais{background:#5F7E9E;} .chip.rosto{background:#B5652E;}
+.card-title{font-family:'Italiana',serif;font-size:17px;color:var(--txt);margin-bottom:5px;line-height:1.25;}
+.card-hl{font-size:12.5px;font-weight:600;color:var(--txt-m);margin-bottom:4px;}
+.card-lg{font-family:'Lora',serif;font-style:italic;font-size:12px;color:#7A5C3A;line-height:1.5;}
+
+.fe-box{margin:26px 16px 6px;background:linear-gradient(140deg,#3A2812,#5A4326);border-radius:16px;padding:26px 30px;text-align:center;}
+.fe-box .v{font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,2.6vw,20px);color:#fff;line-height:1.4;max-width:640px;margin:0 auto 8px;}
+.fe-box .r{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ouro-c);}
+
+footer{background:var(--txt);padding:32px 28px;text-align:center;margin-top:24px;}
+footer .fn{font-family:'Italiana',serif;font-size:26px;color:#fff;}
+footer .fm{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.04em;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="header">
+  <div class="h-tag">Calendário Editorial · Execução Diária</div>
+  <div class="h-brand">Ok Delícias com Amor</div>
+  <div class="h-title">agosto é de quem cuida</div>
+  <div class="h-badge">Agosto 2026</div>
+  <div class="h-verse">"Como um pai se compadece de seus filhos, assim o Senhor se compadece." · Salmo 103:13</div>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot d-pais"></span>Dia dos Pais</div>
+  <div class="legend-item"><span class="legend-dot d-cozinha"></span>Sábado na Cozinha da Oli</div>
+  <div class="legend-item"><span class="legend-dot d-sabor"></span>Sabor e Cardápio</div>
+  <div class="legend-item"><span class="legend-dot d-prova"></span>Prova e Confiança</div>
+  <div class="legend-item"><span class="legend-dot d-fe"></span>Fé e Gratidão</div>
+</div>
+<div class="cad">Tema do mês: "Agosto é de quem cuida". Pilares: <b>construção de marca sem pedir encomenda</b> (a agenda está cheia) + <b>a voz do cliente</b> (depoimentos reais já em mão) + <b>a série Sábado na Cozinha da Oli</b> + <b>fé e gratidão no domingo</b>. A única data com peça é o <b>Dia dos Pais (09/08)</b>, e ela é homenagem, não venda. Cadência: 1 Reel por sábado + prova social recorrente + stories diários + <b>captação constante para o banco de conteúdo</b>.</div>
+
+<div class="alerta">
+  <b>O mês mudou de função (29/07). Ler antes de qualquer peça.</b><br>
+  1. <b>A agenda do Dia dos Pais LOTOU</b> (confirmado com a Oli em 29/07). A campanha de venda de 03 a 07 foi <b>cancelada</b>: não se vende o que não se pode entregar, e cada pedido novo vira uma recusa. A semana vira construção de marca e prova social.<br>
+  2. <b>A Oli pediu para acalmar a propaganda.</b> Ela já disse vários "nãos" para agosto e alguns para setembro. Agosto ainda tem poucas datas. O conteúdo não pede encomenda, ele constrói relação. O movimento continua, a venda que pausa.<br>
+  3. <b>CAPTAÇÃO É A PRIORIDADE DO MÊS.</b> Todo material precisa estar gravado até <b>18/09</b>. Depois disso não há mais como captar com a Oli. Sem banco de conteúdo, o perfil apaga. Cobrar captação mesmo em dia sem post.<br>
+  4. <b>O rosto da Oli precisa aparecer entre 09 e 16/08</b> (a cada 2 ou 3 semanas, contando de 26/07). Reservado no dia 15.
+</div>
+
+<!-- SEMANA 1 -->
+<div class="week-block">
+  <div class="week-title">Semana 1 <span>01 a 02 · Virada de mês</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">01</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip serie">Série</span><div class="card-title">Sábado na Cozinha da Oli</div><div class="card-hl">dia duplo agendado: card estático da série às 18h30 (breu, facho de luz e medalhões) e às 20h o reel da ESTREIA DO CADERNO em material real (27s, slow motion fundo, grade quente vencendo a luz fria, nomes de cliente fora de todos os enquadramentos). A captação da manhã destravou o símbolo da marca</div><div class="card-lg">"quem pede com tempo tem lugar na página."</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">02</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Um mês novo pela frente</div><div class="card-hl">2 telas às 19h com o mar de salgados da entrega de ontem em full bleed (9020 e 9022), névoa dourada de manhã descendo sobre a mesa. A primeira versão saiu desenhada em código e foi reprovada por vazia: com acervo novo, a foto manda. Salmo 103:13 fala de PAI e abre o mês do Dia dos Pais por baixo, sem citar a data</div><div class="card-lg">"que agosto seja de cuidar dos nossos."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 2 -->
+<div class="week-block">
+  <div class="week-title">Semana 2 <span>03 a 09 · Sem venda: a agenda do dia 9 já encheu</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">03</div><div class="card-weekday">Seg</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">A noite de mil salgados</div><div class="card-hl">reel de 38s às 18h30, com a entrega de 01/08. Virou 11 cortes das duas câmeras (9015 e 9023), metade em respiro sem texto. O número entra como confiança de quem pediu, nunca façanha (já houve maiores). O isopor pra chegar quente virou copy. IMG_9016 descartado: é onde o chão aparece. CAPTAR MATERIAL nesta semana</div><div class="card-lg">"uma festa confiou a noite dela na gente."</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">04</div><div class="card-weekday">Ter</div></div><span class="badge b-carr">Carrossel</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">O cuidado peça a peça</div><div class="card-hl">3 cards às 18h em fórmula nova, a LUPA: foto escurecida e desfocada no fundo, círculo com a mesma imagem ampliada 2,9x por cima. Terceira leitura do material de 01/08 e a peça assume isso ("de longe parece igual, de perto não é"). O script agora mede a saturação dentro da lupa e avisa se pegar borda de caixa</div><div class="card-lg">"não tem máquina nessa cozinha."</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">05</div><div class="card-weekday">Qua</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Duelo de sabores</div><div class="card-hl">2 enquetes em fórmula nova: medalhões lado a lado com selo de OU por cima e leque dourado ao fundo. Pastel x risole, canoinha x mini hambúrguer. Engajamento puro, sem venda e sem gastar acervo. O nome de cada peça aparece embaixo, que ensina o cliente a pedir certo</div><div class="card-lg">"a Oli faz os dois. o problema é teu."</div></div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Enquete leve</div><div class="card-hl">engajamento puro, sem venda. Mantém o perfil vivo enquanto a agenda está cheia</div><div class="card-lg">"qual não pode faltar na tua mesa?"</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">06</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Os assados</div><div class="card-hl">material NOVO (Material Salgados Assados, 9036-9040), assadeira com gergelim. Gancho do próprio Fabricio: a Ok quase nunca fala dos assados, e muita gente acha que salgado de festa é só frito. Não é material do dia, então a copy não finge que é. Fórmula: selo redondo DO FORNO + foto full bleed</div><div class="card-lg">"nem tudo aqui passa pelo óleo."</div></div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip rosto">Captação</span><div class="card-title">Bastidor da véspera</div><div class="card-hl">a cozinha preparando o fim de semana do Dia dos Pais. DIA IMPORTANTE DE CAPTAÇÃO (muito volume na cozinha)</div><div class="card-lg">"o domingo de muita gente começa aqui."</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">07</div><div class="card-weekday">Sex</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">Tudo anotado</div><div class="card-hl">2 telas com a foto real do caderno da Oli, em fórmula de bilhete colado com fita. Gratidão pela confiança do Dia dos Pais, sem vender nada. Todo crop fecha na metade esquerda da página, onde só há nome de produto (o topo das colunas tem nome de cliente). AGENDADO 18h</div><div class="card-lg">"cada nome ali é uma festa que vai acontecer."</div></div></div>
+
+    <div class="day-card"><div class="posted-tag">Postado</div><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">08</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip serie">Série</span><div class="card-title">Os assados (episódio 2 da série)</div><div class="card-hl">reel de 21s com as 3 fotos inéditas de assados (9037/9039/9040) animadas em zoom lento, grade âmbar escura da série. Decisão do Fabricio: não depender de captação e fechar o arco aberto nos stories de quarta. Copy honesta (não diz que é de hoje). Trilha no app na hora de agendar. 18h30</div><div class="card-lg">"muita gente acha que salgado de festa é só frito."</div></div></div>
+
+    <div class="day-card destaque"><div class="posted-tag">Postado</div><div class="angulo-faixa a-pais"></div>
+      <div class="card-header"><div><div class="card-date">09</div><div class="card-weekday">Dom</div></div><span class="badge b-post">Post</span> <span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip data">Dia dos Pais</span><div class="card-title">Ele nunca saiu numa foto nossa</div><div class="card-hl">DIA COMPLETO AGENDADO. 11h30: 2 stories (ele na praia "hoje o dia é dele" + teaser do feed). 18h: carrossel de 4 telas com o HERACLIDES no sistema Fio de Ouro (v3, plano cinematográfico escuro, fio dourado costurando as telas). Palco → parte pesada e fina (medalhão da canoinha) → neto no colo → Feliz Dia dos Pais. Zero venda, zero CTA. Cumpre também a janela do rosto da Oli</div><div class="card-lg">"pra todo pai que segura a casa em pé sem nunca pedir uma foto."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 3 -->
+<div class="week-block">
+  <div class="week-title">Semana 3 <span>10 a 16 · Depois da data, a confiança</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">10</div><div class="card-weekday">Seg · Hoje</div></div><span class="badge b-reel">Reel</span> <span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">A parte fina + caixinha</div><div class="card-hl">PIVÔ: não chegou mensagem pós Dia dos Pais, então a peça de prova social virou COLETA. Caixinha postada ("e o teu domingo, como foi?"), com medalhão novo da canoinha premium; as respostas viram a prova social redesenhada da semana. Reel A PARTE FINA às 18h30 com o Material 10.08 (canoinha premium ganhando o fio de ovos), mostrando o que o carrossel de domingo prometeu em palavra</div><div class="card-lg">"é a parte que ninguém pede, e que todo mundo repara."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">11</div><div class="card-weekday">Ter</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="posted-tag">Pronto</div><div class="card-title">A ficha da Canoinha Premium</div><div class="card-hl">2 telas com o Material 10.08. Complementar ao reel de segunda, não repetido: o reel mostrou o PROCESSO, o post mostra O QUE É (frios selecionados, frango com fios de ovos, mínimo 15 peças). Fórmula nova de cartão de menu com leaders pontilhados. Preço fora do criativo, mora no link. O tema "o que sai todo dia" foi remanejado pra quarta, porque a Premium é linha de cima, não item de dia a dia. 18h</div><div class="card-lg">"a que leva mais tempo pra ficar pronta."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">12</div><div class="card-weekday">Qua</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Enquete de sabores</div><div class="card-hl">engajamento leve + cardápio no link</div><div class="card-lg">"qual tu levaria pra reunião de sexta?"</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">13</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Bastidor de quinta</div><div class="card-hl">a cozinha trabalhando, textura e apetite</div><div class="card-lg">"o cuidado que ninguém vê."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">14</div><div class="card-weekday">Sex · Hoje</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="posted-tag">Agendado</div><div class="card-title">Ninguém come na ordem do cardápio</div><div class="card-hl">VOLTA depois de 3 dias parados, com o acervo de foto zerado. Carrossel de 7 telas com o cardápio inteiro, concebido com design chief + copy chief. Organizado por FUNÇÃO NA FESTA (os que sustentam / os que fazem perguntar quem fez / o que some primeiro), não por faixa de preço. SEM preço no criativo: valor vem da tela do fio de ovos, permissão vem dos mínimos escritos como convite, e a decisão migra pro link. Design novo: papel rendado desenhado em código + plaquinha de mesa. Peça pra SALVAR e pra fixar no perfil. 18h</div><div class="card-lg">"toda bandeja esvazia numa ordem só dela."</div></div></div>
+
+    <div class="day-card destaque"><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">15</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip rosto">Rosto da Oli</span><div class="card-title">Sábado na Cozinha da Oli</div><div class="card-hl">SLOT RESERVADO pro rosto da Oli aparecer (lembrete: a cada 2 ou 3 semanas). Pode ser ela falando, ou um retrato com uma frase dela</div><div class="card-lg">"quem faz tem nome, e tem rosto."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">16</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Descanso e gratidão</div><div class="card-hl">cartão A Bênção da Semana, sem venda</div><div class="card-lg">"domingo é de agradecer."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 4 -->
+<div class="week-block">
+  <div class="week-title">Semana 4 <span>17 a 23 · Cuidado no detalhe</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">17</div><div class="card-weekday">Seg</div></div><span class="badge b-carr">Carrossel</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">Peça por peça</div><div class="card-hl">o capricho da decoração feita à mão (material das canoinhas), como prova de qualidade</div><div class="card-lg">"uma a uma, com a mesma mão."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">18</div><div class="card-weekday">Ter</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Você sabia?</div><div class="card-hl">diferença entre canudo, canoinha e empada (educa e evita pedido errado)</div><div class="card-lg">"cada um tem seu nome e seu jeito."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">19</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">O queridinho de agosto</div><div class="card-hl">destaque de um salgado do cardápio, com foto forte</div><div class="card-lg">"esse aqui some primeiro da bandeja."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">20</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Antecipação</div><div class="card-hl">o que está sendo produzido pro fim de semana</div><div class="card-lg">"isso aqui já tem dono."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">21</div><div class="card-weekday">Sex</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Sexta de fartura</div><div class="card-hl">mesa farta + link de encomenda</div><div class="card-lg">"chegou o dia de encher a mesa."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">22</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip serie">Série</span><div class="card-title">Sábado na Cozinha da Oli</div><div class="card-hl">reel cinematográfico da série</div><div class="card-lg">"a herança viva, todo sábado."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">23</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">A bênção da semana</div><div class="card-hl">cartão pra salvar, sem venda</div><div class="card-lg">"o pão de cada dia."</div></div></div>
+  </div>
+</div>
+
+<!-- SEMANA 5 -->
+<div class="week-block">
+  <div class="week-title">Semana 5 <span>24 a 31 · Fechamento e ponte pra setembro</span></div>
+  <div class="week-grid">
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">24</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Segunda também tem fome</div><div class="card-hl">abre a agenda da semana</div><div class="card-lg">"a semana começa, e a mesa também."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">25</div><div class="card-weekday">Ter</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip">Prova</span><div class="card-title">A mesa do cliente</div><div class="card-hl">mais depoimentos recebidos no mês (sem nome)</div><div class="card-lg">"quem prova, volta."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">26</div><div class="card-weekday">Qua</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">As datas que ainda cabem</div><div class="card-hl">aponta com calma as poucas datas livres de setembro (ATENÇÃO: até o dia 18, por causa da viagem, que ainda NÃO pode ser mencionada)</div><div class="card-lg">"se tu já sabe a tua data, a gente conversa."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">27</div><div class="card-weekday">Qui</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Bastidor de fim de mês</div><div class="card-hl">a cozinha que não para</div><div class="card-lg">"setembro já bate na porta."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-sabor"></div>
+      <div class="card-header"><div><div class="card-date">28</div><div class="card-weekday">Sex</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><div class="card-title">Sexta de fartura</div><div class="card-hl">última sexta do mês, esteira + link</div><div class="card-lg">"o fim de semana pede mesa boa."</div></div></div>
+
+    <div class="day-card destaque"><div class="angulo-faixa a-cozinha"></div>
+      <div class="card-header"><div><div class="card-date">29</div><div class="card-weekday">Sáb</div></div><span class="badge b-reel">Reel</span></div>
+      <div class="card-body"><span class="chip rosto">Rosto da Oli</span><div class="card-title">Sábado na Cozinha da Oli</div><div class="card-hl">finale do mês, com a Oli em quadro (2ª aparição do mês, mantendo a cadência de rosto)</div><div class="card-lg">"agosto foi de cuidar."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-fe"></div>
+      <div class="card-header"><div><div class="card-date">30</div><div class="card-weekday">Dom</div></div><span class="badge b-story">Stories</span></div>
+      <div class="card-body"><span class="chip fe">Fé</span><div class="card-title">Gratidão de domingo</div><div class="card-hl">fechamento espiritual do mês</div><div class="card-lg">"obrigada, Senhor, por mais um mês de servir."</div></div></div>
+
+    <div class="day-card"><div class="angulo-faixa a-prova"></div>
+      <div class="card-header"><div><div class="card-date">31</div><div class="card-weekday">Seg</div></div><span class="badge b-post">Post</span></div>
+      <div class="card-body"><div class="card-title">Agosto foi de quem cuida</div><div class="card-hl">fechamento do mês, com Deus à frente, e ponte pra setembro</div><div class="card-lg">"cuidar é o nosso jeito de amar."</div></div></div>
+  </div>
+</div>
+
+<div class="fe-box">
+  <div class="v">"Como um pai se compadece de seus filhos, assim o Senhor se compadece dos que o temem."</div>
+  <div class="r">Salmo 103:13 · âncora de fé do mês, o cuidado como herança</div>
+</div>
+
+<footer>
+  <div class="fn">Ok Delícias com Amor</div>
+  <div class="fm">@ok_deliciascomamor · (55) 99928-5883 · Santo Cristo, RS · Calendário Editorial Agosto 2026</div>
+</footer>
+
+</div>
+</body>
+</html>
