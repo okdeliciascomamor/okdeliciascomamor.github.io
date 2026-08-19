@@ -79,10 +79,18 @@ Fé cristã como **gratidão**, nunca proselitismo. Nada de política, sensualid
 - **Mini Hambúrguer Artesanal**: o **pãozinho é caseiro, a própria Oli faz**.
   Vai montado com alface e um enfeite de cenoura no palito. Isso é diferencial
   de verdade e pode ser dito na copy.
+- **Empada**: item da linha premium, sai em três sabores (frango, calabresa e
+  legumes). Como identificar cada um pela foto (confirmado pelo Fabricio em
+  19/08/2026):
+  - **Empada de calabresa**: base de massa com **calabresa picada por cima**,
+    cobertura avermelhada, **pingo de maionese e rodela de azeitona**.
+  - **Empadinha de legumes**: recheio de **legumes picados (aspecto verde) com
+    milho**, pingo de maionese.
 - **NÃO EXISTE "mini pizza" no cardápio.** Em 31/07/2026 uma peça saiu com esse
-  nome e foi reprovada na hora. A foto `Material 11.07/IMG_8806` (base com
-  cobertura e azeitona) **não tem nome confirmado**: se for usada, só com termo
-  abrangente.
+  nome e foi reprovada na hora. **A foto que gerou a confusão
+  (`Material 11.07/IMG_8806`) é EMPADA DE CALABRESA**, identificada em
+  19/08/2026. Ela ficou travada mais de um mês por falta desse nome, e agora
+  está liberada para uso.
 - **Prensadinho** (R$ 180,00 o cento): Presunto · Queijo · Cenoura · Pepino ·
   Maionese caseira.
 - Na dúvida entre produtos, usar termo abrangente ("os salgados da Oli",
@@ -192,9 +200,15 @@ Vender só o resultado (macio, suculento) e a herança. Nunca a técnica.
   abundante. Card quase sem imagem é reprovado.
 - **Criatividade a cada peça**: não repetir a mesma fórmula de layout. Olhar o que
   já foi postado antes de criar.
-- **Não reusar foto entre peças.** A regra vale pelo **produto e pelo motivo**,
-  não só pelo nome do arquivo: dois enquadramentos da mesma bandeja ainda contam
-  como repetição.
+- **Não repetir a MESMA IMAGEM entre peças**, mas **recorte e ângulo novos de
+  foto antiga contam como criativo novo** (definido pelo Fabricio em 19/08/2026).
+  O acervo inteiro volta a ser matéria-prima: a mesma foto rende peças
+  diferentes fechando em outra peça, em outro corte, em outro formato. O que
+  não pode é sair o mesmo enquadramento duas vezes, nem a mesma leitura visual
+  repetida em sequência.
+  **Continua valendo o bom senso:** se a foto irmã (mesma bandeja, mesma sessão)
+  saiu ontem no mesmo corte, hoje ela não sai de novo. O critério é o que o
+  seguidor vê, não o nome do arquivo.
 - **Checagem obrigatória antes de escolher qualquer foto** (o histórico já não
   cabe na cabeça). Rodar, na raiz do projeto:
 
