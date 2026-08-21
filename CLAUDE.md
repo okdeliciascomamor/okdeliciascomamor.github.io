@@ -230,6 +230,31 @@ Vender só o resultado (macio, suculento) e a herança. Nunca a técnica.
   de foto já publicada. Foi o que destravou o acervo esgotado. As peças prontas
   ficam em `02 - Criativos/_pecas/` (`m_pastel`, `m_risole`, `m_canoinha`,
   `m_cortado`, `m_burguer`, `m_decorada`), geradas pelo script de medalhões.
+- **Tratamento gastronômico (food porn) para foto de comida.** Foto de celular
+  crua não vende. A receita que funcionou em 21/08 está em
+  `post_agosto21_queridinho.py` e é reaproveitável:
+  1. **Balanço de branco pela própria cena** (`_wb`): usa o percentil 96 como
+     referência de neutro. A luz da cozinha é fria e deixa a mesa azulada, e
+     **mesa azul rouba o apetite da comida inteira**. Corrigir na origem é
+     melhor que empurrar vermelho por cima.
+  2. **Microcontraste** (`_clarity`): faz aparecer gergelim, casca de pão e
+     fibra da carne.
+  3. **Vibrance, não saturação** (`_vibrance`): satura só o que já tem cor e
+     mais nos tons quentes. Saturação global encardece a mesa e deixa a alface
+     fluorescente.
+  4. **Halação quente** (`_halacao`): brilho derramando das altas luzes, dá
+     sensação de gordura brilhando.
+  5. **Profundidade de campo simulada** (`_profundidade`): nítido no produto,
+     desfocado no resto. É o efeito que mais separa foto de celular de foto de
+     comida. **Cuidado com o raio:** raio curto come as laterais do produto.
+- **Ângulo de comida: de cima quase nunca vende.** O mini hambúrguer visto de
+  cima só mostra pão, e pão sozinho não dá apetite (reprovado 2x pelo Fabricio
+  em 21/08). O que vende é o **perfil**, com as camadas à mostra. Se as fotos
+  não têm esse ângulo, **garimpar nos vídeos**: cada segundo de 4K é uma foto
+  em potencial, e foi assim que saiu a tela 3 de 21/08 (frame do 9173 aos
+  15,4s, salvo como `IMG_9173_perfil.jpg`).
+- **Quando o produto é grande no quadro, o texto cede espaço, não o contrário.**
+  Platô grande em cima de close come justamente o recheio, que é o que vende.
 - **Tratamento obrigatório do medalhão**, senão foto de celular fica chapada:
   microcontraste (imagem menos a versão borrada), calor no dourado, vinheta
   interna e resolução de trabalho alta. E conferir se o crop pegou a **peça**,
