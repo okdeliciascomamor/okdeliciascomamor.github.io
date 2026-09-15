@@ -3,7 +3,8 @@
 **Tipo de parceria:** Coprodução
 **Fabricio atua como:** Co-produtor / Estrategista Digital
 **Última atualização:** 15/09/2026
-**Status:** Operação diária de conteúdo rodando (feed + stories + reels)
+**Status:** ⏸️ **PRODUÇÃO DE CONTEÚDO EM STAND BY desde 15/09/2026** (decisão do
+Fabricio). Última peça: carrossel do Dia do Cliente, agendado para 15/09 às 20h.
 
 > ⚠️ **Este arquivo é lido por TODAS as janelas/sessões e está versionado no git.**
 > Conhecimento crítico do projeto mora aqui, não só na memória automática (que é
@@ -13,6 +14,14 @@
 > Existe uma pasta irmã com acento no nome (`Ok - Delícias com Amor`) que carrega
 > uma cópia deste mesmo arquivo. **As duas precisam ficar idênticas.** Ao editar
 > uma, copiar para a outra.
+
+> ⏸️ **STAND BY (15/09/2026).** O Fabricio pausou a produção de conteúdo da Ok.
+> Enquanto durar: **não cobrar captação, não propor pauta, não lembrar prazo nem
+> janela do rosto da Oli.** Os lembretes recorrentes deste arquivo ficam
+> suspensos. Tudo aqui continua valendo como regra de marca para quando voltar.
+> **Ao retomar:** perguntar o que mudou (ritmo, material novo, a situação da
+> família), rodar a checagem de foto usada e reconferir os Insights antes de
+> sugerir horário, porque o público pode ter mudado.
 
 ---
 
@@ -557,7 +566,8 @@ inventar** · 15/09 carrossel do Dia do Cliente agendado no Business Suite para 
 empadas), as fotos do mini hambúrguer de 19.08 e o acervo antigo inteiro em
 recorte novo (regra de 19/08). **Não entra material novo desde 15/08.**
 
-**O QUE AINDA FALTA CAPTAR, em ordem de urgência:**
+**O QUE AINDA FALTA CAPTAR, em ordem de urgência** (lista congelada em 15/09,
+suspensa durante o stand by):
 1. **Banco de conteúdo da viagem, limite 18/09** (assunto reservado,
    [[viagem-oli-setembro-e-banco-de-conteudo]]). Em 15/09 faltavam 3 dias.
 2. **O rosto da Oli.** Última aparição conhecida: 09/08 (Dia dos Pais). A janela
@@ -586,7 +596,7 @@ inédita.** O que sobrou está reprovado por regra da casa:
 **Consequência:** enquanto não houver captação, toda peça precisa nascer sem
 foto (desenhada em código, como o caderno de 30/07 e o mockup de conversa de
 27/07) ou o perfil repete material. **Cobrar captação do Fabricio a cada dia,
-mesmo em dia sem post.** Ver [[viagem-oli-setembro-e-banco-de-conteudo]]: o
+mesmo em dia sem post** (suspenso durante o stand by de 15/09/2026). Ver [[viagem-oli-setembro-e-banco-de-conteudo]]: o
 limite é 18/09.
 
 ### Material bruto disponível
