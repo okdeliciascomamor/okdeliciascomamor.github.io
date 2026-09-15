@@ -2,7 +2,7 @@
 
 **Tipo de parceria:** Coprodução
 **Fabricio atua como:** Co-produtor / Estrategista Digital
-**Última atualização:** 28/07/2026
+**Última atualização:** 15/09/2026
 **Status:** Operação diária de conteúdo rodando (feed + stories + reels)
 
 > ⚠️ **Este arquivo é lido por TODAS as janelas/sessões e está versionado no git.**
@@ -77,8 +77,12 @@ Fé cristã como **gratidão**, nunca proselitismo. Nada de política, sensualid
 - **Risole**: empanado, macio por dentro. O diferencial técnico é segredo (ver
   seção 4).
 - **Mini Hambúrguer Artesanal**: o **pãozinho é caseiro, a própria Oli faz**.
-  Vai montado com alface e um enfeite de cenoura no palito. Isso é diferencial
-  de verdade e pode ser dito na copy.
+  Montagem completa, na ordem (confirmada com o Fabricio em 19/08/2026, que
+  corrigiu a falta do queijo): pãozinho caseiro, **maionese dos dois lados**,
+  hambúrguer, **queijo**, presunto, tomate, picles, **alface por último** (pra
+  ficar em pé) e **estrelinha de cenoura no palito**, com gergelim por cima. É o
+  único item vendido **por unidade (R$ 3,50, mínimo 10)**, e a montagem peça a
+  peça é o argumento. O cardápio do site foi atualizado com essa lista em 19/08.
 - **Empada**: item da linha premium, sai em três sabores (frango, calabresa e
   legumes). Como identificar cada um pela foto (confirmado pelo Fabricio em
   19/08/2026):
@@ -130,6 +134,14 @@ precisar de um cento inteiro.
 - Em carrossel de combo ou kit, **preço não vai no criativo** (valor exposto
   afasta). Aí o CTA pode ser "pelo link da bio ou aqui no direct", porque combo é
   venda consultiva. Para cardápio padrão (preço público no link), o CTA é o link.
+- **Preço também não vai no criativo de cardápio** (Fabricio, 14/08/2026: "não
+  acho interessante deixar os valores explícitos"). O valor mora no link. Sem
+  preço, a peça precisa de outra âncora: o **trabalho mostrado** (ancora valor),
+  o **pedido mínimo escrito como convite** ("não precisa de um cento pra ter o
+  caprichado") e a decisão no link. Estrutura aprovada em
+  `carrossel_agosto14_cardapio.py`: cardápio organizado por **função na festa**
+  (os que sustentam a mesa / os que fazem alguém perguntar quem fez / o que some
+  primeiro), nunca por faixa de preço.
 - **Nunca usar desconto ou economia.** Combo vende como curadoria, não promoção.
 - **Cuidado extra não vira promessa.** O que nasce de capricho da Oli entra como
   escolha dela, nunca como serviço incluído. Em 04/08/2026 "chegar quente é
@@ -186,6 +198,11 @@ Vender só o resultado (macio, suculento) e a herança. Nunca a técnica.
   peça de destaque tem guarnição ruim, **trocar de peça, não tirar a guarnição**.
   Método já usado: máscara HSV do verde e preenchimento a partir da borda para
   detectar buracos internos na folha (script `furos.py`).
+- **Pão rasgado, quebradiço ou com miolo à mostra no produto de destaque.**
+  Reprovado 2x em 21/08/2026: a capa com pães rachados e o único mini hambúrguer
+  de perfil filmado em 19/08, que tinha o pão rasgado. Mesma lógica da
+  guarnição: **trocar de peça ou de foto, não insistir no corte.** Nenhum crop
+  salva defeito no próprio produto.
 - **Print de conversa de cliente.** Contém CPF (que é a chave PIX), valor,
   comprovante, nome completo, foto e telefone.
 
@@ -258,10 +275,34 @@ Vender só o resultado (macio, suculento) e a herança. Nunca a técnica.
   cima só mostra pão, e pão sozinho não dá apetite (reprovado 2x pelo Fabricio
   em 21/08). O que vende é o **perfil**, com as camadas à mostra. Se as fotos
   não têm esse ângulo, **garimpar nos vídeos**: cada segundo de 4K é uma foto
-  em potencial, e foi assim que saiu a tela 3 de 21/08 (frame do 9173 aos
-  15,4s, salvo como `IMG_9173_perfil.jpg`).
+  em potencial.
+- **Frame de vídeo se escolhe MEDINDO, nunca no olho.** Em 21/08 o frame
+  escolhido a olho estava tremido (nitidez 10 contra 34 do vizinho). Varrer o
+  trecho com ffmpeg e medir a **variância do laplaciano** (nitidez) e a **fração
+  do quadro em tom dourado** (pão com cara de assado), e ficar com o topo das
+  duas medidas. A capa e a tela 2 de 21/08 saíram assim.
+- **Material novo não é automaticamente melhor que acervo.** Em 21/08 foram
+  nove versões da tela 3 insistindo em frame novo com defeito, e a foto certa
+  estava guardada desde junho: `MIni Hamburgueres.jpeg` (raiz do projeto,
+  bandeja com pães íntegros e as estrelinhas de cenoura de verdade). O
+  Fabricio autorizou acervo antigo tratando só a cor. **Antes de insistir num
+  material, olhar o acervo.**
 - **Quando o produto é grande no quadro, o texto cede espaço, não o contrário.**
   Platô grande em cima de close come justamente o recheio, que é o que vende.
+- **Sistema do VÉU, aprovado em 21/08/2026** ("refaça, deixe lindo", e aprovou):
+  foto full bleed, **véu que nasce transparente e vira sólido** atrás do texto
+  (gradiente só na transição, alpha constante onde há letra), kicker com
+  **filete dourado** na frente, título Gloock alinhado à esquerda e **numeração
+  discreta n/N** no topo direito. Funções `scrim`, `kicker_filete` e `selo_num`
+  em `post_agosto21_queridinho.py`. Reusado no Dia do Cliente (15/09), com o
+  "obrigada" em traço manuscrito (`NothingYouCouldDo`) como assinatura.
+- **Reprovado em 21/08:** platô retangular de cantos arredondados sobre a foto
+  (lê como caixa colada) e **faixa fina de foto no topo com papel creme vazio
+  embaixo** (sobra vazio e a lista vira documento).
+- **Aprovado em 14/08 (cardápio):** papel rendado de bandeja desenhado em código
+  com plaquinha de mesa nomeando o grupo. Furo pequeno e sombra fraca, senão
+  vira poá de tecido. Dourado solto sobre a renda reprova no contraste: texto
+  vai dentro da plaquinha.
 - **Tratamento obrigatório do medalhão**, senão foto de celular fica chapada:
   microcontraste (imagem menos a versão borrada), calor no dourado, vinheta
   interna e resolução de trabalho alta. E conferir se o crop pegou a **peça**,
@@ -335,8 +376,9 @@ Faz sentido para cidade pequena: o pessoal volta do serviço e é aí que pensa 
 festa do fim de semana. **Não sugerir horário por intuição**, sempre esta grade.
 Reconferir os Insights a cada dois ou três meses, o padrão pode mudar.
 
-- **O rosto da Oli precisa aparecer a cada 2 ou 3 semanas.** Marco: 26/07/2026.
-  Próxima janela: **09 a 16/08/2026**. Sem recorrência a humanização se perde.
+- **O rosto da Oli precisa aparecer a cada 2 ou 3 semanas.** Última aparição
+  conhecida: **09/08/2026** (carrossel do Dia dos Pais). Em 15/09 a janela já
+  estava vencida. Sem recorrência a humanização se perde.
   Reservar 2 a 3 slots por mês no calendário, não improvisar.
 - **Consultar o calendário do mês antes de dizer o que postar**, e mantê-lo
   atualizado (postado / hoje).
@@ -420,6 +462,13 @@ já que não existe foto dele. A foto real continua sendo prioridade de captaç�
   (conta própria da marca, não o repo pessoal do Fabricio). O `gh` está
   autenticado como `fabriciokaempf` e tem permissão de push. **Confirmar com o
   Fabricio antes de publicar qualquer coisa no site ao vivo.**
+  **Antes de todo push: `git pull --rebase --autostash origin master`.** Em
+  14/08 o remoto tinha commits de julho que a máquina não tinha, o push foi
+  rejeitado e o autostash conflitou no `cardapio.html`. Fazer backup do
+  CLAUDE.md antes de mexer em rebase.
+  Links no ar: `https://okdeliciascomamor.github.io/cardapio.html` (link da
+  bio), `.../calendario_julho2026.html` e `.../calendario_agosto2026.html`
+  (publicados em 14/08), brandbook e briefing na raiz do mesmo domínio.
 
 ---
 
@@ -433,8 +482,9 @@ Duas captações do Fabricio no mesmo dia:
   letra dela, adesivos da logo) e vídeos 9006/9009 (panorâmicas 4K). O vídeo
   9008 está descartado (cozinha vazia com azulejo). **CUIDADO: o topo das
   colunas tem NOME DE CLIENTE em vermelho. Todo enquadramento corta essa
-  faixa.** Usado no reel de estreia (`reel_agosto01_caderno_sabado.py`); as
-  fotos 9010-9012 seguem inéditas.
+  faixa.** Usado no reel de estreia (`reel_agosto01_caderno_sabado.py`). A 9011 e
+  a 9012 saíram nos stories de 07/08; a 9010 (inédita até então) e um recorte
+  novo da 9012 saíram no Dia do Cliente de 15/09.
 - **`Material 01.08²/`**: O MAR DE SALGADOS da entrega de mil peças de
   01/08 à noite. Fotos 9017-9022 (bandejas douradas lado a lado, limpas,
   apetitosas, sem mão nua nem panela) e vídeos 9015 (66s!), 9016 e 9023,
@@ -479,19 +529,40 @@ Duas captações do Fabricio no mesmo dia:
   é de autoria, não de enquadramento. Ou seja, o reel de 10/08 mostra o trabalho
   da mão dele mesmo sem a mão no quadro, e a copy pode se apoiar nisso com
   verdade. A cena dele decorando segue valendo como captação futura, mas o
-  material entregue já é dele. Sobram inéditas: as fotos 9067, 9068 e 9069
-  (as duas últimas com recorte).
+  material entregue já é dele. As três fotos já saíram:
+  caixinha (10/08), post da premium (11/08) e cardápio (14/08).
 
-**ESTADO EM 10/08:** o acervo de 07/08 foi todo consumido (assados no reel de
-08/08, fotos do pai no carrossel e stories de 09/08). Entrou o `Material 10.08`,
-que rendeu o reel da parte fina e deixou 1 foto inédita. **Segue sem bastidor de
-processo e sem o rosto da Oli.**
+- **`Material 19.08/`** (era `Material 15.08`, renomeada pelo Fabricio; fotos e
+  vídeos de 15/08):
+  - **9165 (vídeo 22s): EMPADINHAS DE LEGUMES** em forminha rendada. Lindo e
+    **ainda inédito**. Produto que o perfil nunca mostrou.
+  - **9166-9169: empadinha de legumes. 9170-9172: empada de calabresa.**
+    Inéditas.
+  - **9173 (vídeo 17s): montagem do mini hambúrguer.** Frame
+    `IMG_9173_fileira.jpg` (7,0s) foi a tela 2 de 21/08. **O hambúrguer de
+    perfil desse vídeo tem o PÃO RASGADO:** `IMG_9173_perfil.jpg` está reprovado.
+  - 9174-9176 e 9192/9194/9195: fotos do mini hambúrguer (montagem e prontos).
+    Nenhuma foi ao ar, mas vistas de cima só mostram pão.
+  - **9193 (vídeo 24s): bandeja de prontos**, quase toda vista de cima.
+    `IMG_9193_bandeja.jpg` (11,4s) foi a capa de 21/08.
+
+**HISTÓRICO DE POSTAGEM CONHECIDO (depois de 10/08):** 10/08 reel da parte fina
+e caixinha · 11/08 post da canoinha premium · 14/08 carrossel do cardápio sem
+preço e 2 stories · **15 a 20/08 sem post** · 21/08 carrossel do queridinho (mini
+hambúrguer), 18h · **de 22/08 a 14/09 não há registro nesta memória, não
+inventar** · 15/09 carrossel do Dia do Cliente programado para 20h.
+
+**ESTADO EM 15/09:** inéditos no acervo: vídeo 9165 e fotos 9166-9172 (as
+empadas), as fotos do mini hambúrguer de 19.08 e o acervo antigo inteiro em
+recorte novo (regra de 19/08). **Não entra material novo desde 15/08.**
 
 **O QUE AINDA FALTA CAPTAR, em ordem de urgência:**
-1. **O rosto da Oli**, janela 09 a 16/08 ([[rosto-da-oli-a-cada-2-ou-3-semanas]]).
-2. **Produto limpo e inédito.** É o que acabou primeiro e é o que sustenta o
-   perfil. Sem isso, a semana de 10/08 nasce sem peça de venda possível.
-3. Bastidor de processo e o banco da viagem, limite 18/09.
+1. **Banco de conteúdo da viagem, limite 18/09** (assunto reservado,
+   [[viagem-oli-setembro-e-banco-de-conteudo]]). Em 15/09 faltavam 3 dias.
+2. **O rosto da Oli.** Última aparição conhecida: 09/08 (Dia dos Pais). A janela
+   de 2 a 3 semanas já venceu ([[rosto-da-oli-a-cada-2-ou-3-semanas]]).
+3. **Coxinha, enroladinho e prensadinho** não têm foto nenhuma no acervo.
+4. O Heraclides decorando: autoria confirmada em 10/08, cena nunca filmada.
 
 ### 🚨 O acervo ANTERIOR tinha acabado (levantado em 30/07/2026, superado)
 
@@ -525,6 +596,8 @@ limite é 18/09.
 - **`Material 30.05/`, `31.05/`, `01.06/`**: material antigo, já bastante usado.
 
 ### Pendências abertas
+- **Não existe `calendario_setembro2026.html`.** Setembro está rodando sem
+  calendário. Criar antes de planejar a próxima semana.
 - **Vinheta motion da logo**: brief fechado (sting de 5s, 9:16, 6 frames,
   estética Brasa Editorial, `Logo.jpeg` como frame inicial). Bloqueada aguardando
   autenticação do Higgsfield. Ao retomar, não refazer as perguntas de brief.
@@ -534,5 +607,5 @@ limite é 18/09.
   transcritos e redesenhados (ver seção 5).
 
 ### Próxima campanha
-**Dia dos Pais.** De 03 a 07/08 a campanha vende cuidado e momento, sem rosto.
-**Em 09/08** entra a peça afetiva com o Heraclides, sem venda.
+Nenhuma definida para o fim de setembro. Dia dos Pais (09/08) e Dia do Cliente
+(15/09) já saíram.
