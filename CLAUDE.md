@@ -153,6 +153,13 @@ precisar de um cento inteiro.
   momento de fé, não numa saudação comemorativa.
 - **Data de produto que a Ok não faz não entra no calendário** (ex: Dia da Pizza).
 - **Data sazonal vende a SEMANA, não o dia.**
+- **Dia do Cliente (15/09).** Criado em 2003 por um gaúcho, João Carlos Rego
+  (confirmado em fonte no benchmarking de 15/09/2026). **Não afirmar "Porto
+  Alegre"** (não há fonte primária) **nem que a data "nasceu sem venda"** (o
+  criador pensou justamente em promoção). Clichês da data que ficam fora:
+  "você é o motivo do nosso sucesso", cupom, sorteio, brinde anunciado. A peça
+  de 2026 (`carrossel_setembro15_dia_do_cliente.py`) usou o caderno da Oli
+  como calendário, falas reais com recorrência e nenhum CTA, às 20h.
 
 ### Segredo que não se revela
 O diferencial técnico do risole (**leite na massa, não água**) é **INTERNO**.
