@@ -381,7 +381,8 @@ Reconferir os Insights a cada dois ou três meses, o padrão pode mudar.
   estava vencida. Sem recorrência a humanização se perde.
   Reservar 2 a 3 slots por mês no calendário, não improvisar.
 - **Consultar o calendário do mês antes de dizer o que postar**, e mantê-lo
-  atualizado (postado / hoje).
+  atualizado (postado / hoje). Quando o mês não tem calendário (setembro de
+  2026, por decisão do Fabricio), não inventar pauta: seguir o pedido do dia.
 - **Rodar `Get-Date` antes de qualquer resposta** que fale de hoje, amanhã ou
   agenda. A cada turno, não reaproveitar a data de antes.
 - **Pesar custo de tokens antes de acionar muitos agentes.** Com orçamento
@@ -550,7 +551,7 @@ Duas captações do Fabricio no mesmo dia:
 e caixinha · 11/08 post da canoinha premium · 14/08 carrossel do cardápio sem
 preço e 2 stories · **15 a 20/08 sem post** · 21/08 carrossel do queridinho (mini
 hambúrguer), 18h · **de 22/08 a 14/09 não há registro nesta memória, não
-inventar** · 15/09 carrossel do Dia do Cliente programado para 20h.
+inventar** · 15/09 carrossel do Dia do Cliente agendado no Business Suite para 20h.
 
 **ESTADO EM 15/09:** inéditos no acervo: vídeo 9165 e fotos 9166-9172 (as
 empadas), as fotos do mini hambúrguer de 19.08 e o acervo antigo inteiro em
@@ -596,8 +597,9 @@ limite é 18/09.
 - **`Material 30.05/`, `31.05/`, `01.06/`**: material antigo, já bastante usado.
 
 ### Pendências abertas
-- **Não existe `calendario_setembro2026.html`.** Setembro está rodando sem
-  calendário. Criar antes de planejar a próxima semana.
+- **Setembro roda sem calendário editorial, por decisão do Fabricio** (15/09/2026:
+  "sem calendário editorial, é só o post mesmo"). Não cobrar nem criar
+  `calendario_setembro2026.html`. Cada peça é pedida avulsa.
 - **Vinheta motion da logo**: brief fechado (sting de 5s, 9:16, 6 frames,
   estética Brasa Editorial, `Logo.jpeg` como frame inicial). Bloqueada aguardando
   autenticação do Higgsfield. Ao retomar, não refazer as perguntas de brief.
